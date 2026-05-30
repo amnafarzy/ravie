@@ -28,7 +28,6 @@ Maintenance and accuracy release. Claude Code only; Codex content extracted to a
 ### Notes
 
 - All 30 documented hook payload cases (16 block, 14 allow) plus the two new edge cases pass; scripts were not modified in this release.
-- The GitHub install URLs use the `amnafarzy/ravie` path, which does not yet resolve publicly — confirm the final owner/repo before publishing. See `FIXES-APPLIED.md`.
 
 [1.1.0]: https://github.com/amnafarzy/ravie/releases/tag/v1.1.0
 
