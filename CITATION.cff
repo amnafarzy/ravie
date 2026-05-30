@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+title: Ravie
+message: "If you use this project, please cite it as below."
+type: software
+authors:
+  - name: "Ravie Contributors"
+repository-code: "https://github.com/amnafarzy/ravie"
+url: "https://github.com/amnafarzy/ravie"
+license: MIT
+version: "1.1.0"
+date-released: "2026-05-29"
+abstract: "A four-layer operating system for Claude Code — skills, rules, hooks, and agents for solo founders and designer-developers."
+keywords:
+  - claude-code
+  - ai-agent
+  - developer-tools
+  - skills
+  - solo-founder
+  - designer-developer

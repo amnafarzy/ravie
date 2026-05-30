@@ -1,0 +1,29 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-marketplace.json",
+  "name": "ravie",
+  "owner": {
+    "name": "Ravie Contributors"
+  },
+  "description": "Ravie — a four-layer operating system for Claude Code aimed at solo founders and designer-developers.",
+  "plugins": [
+    {
+      "name": "ravie",
+      "source": ".",
+      "description": "33 skills, 5 rule reference files, 4 subagents, and 4 deterministic hooks for solo founders and designer-developers.",
+      "version": "1.1.0",
+      "category": "productivity",
+      "keywords": [
+        "claude-code",
+        "skills",
+        "agents",
+        "hooks",
+        "solo-founder",
+        "designer-developer",
+        "workflow",
+        "developer-tools"
+      ],
+      "homepage": "https://github.com/amnafarzy/ravie",
+      "license": "MIT"
+    }
+  ]
+}
