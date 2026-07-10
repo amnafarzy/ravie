@@ -107,12 +107,10 @@ When creating or revising a skill, produce a complete skill package plan and the
 
 ## Frontmatter
 - name: [must exactly match directory]
-- description: [trigger-focused, includes use and do-not-use boundaries]
+- description: [the FULL trigger contract, max 60 words: what it does + exact phrases/contexts that fire it, phrased assertively ("Use this whenever…"), with explicit NOT-boundaries naming the neighboring skill. The description is paid in every session — every word counts. No when-to-use content in the body.]
 
 ## Body sections
 - Purpose
-- When to use this
-- When NOT to use this
 - Process with concrete commands/examples
 - Output format
 - Hard rules
@@ -140,8 +138,9 @@ When creating or revising a skill, produce a complete skill package plan and the
 - Never create a skill for a one-time task — skills are for repeated patterns
 - Never create a skill that duplicates an existing one — check SKILL-INDEX.md first
 - Never put client-specific content in a reusable skill
-- Always include valid YAML frontmatter before the title with `name` matching the directory and a trigger-focused `description`
-- Always include "When to use this", "When NOT to use this", "Hard rules", "Connects to", and realistic failure modes
+- Always include valid YAML frontmatter before the title with `name` matching the directory and a trigger-contract `description` (max 60 words — all when-to-use info lives here, never in the body)
+- Always include "Hard rules", "Connects to", and realistic failure modes; keep the body under 500 lines (use a references/ subfolder beyond that)
+- Never let two skill descriptions overlap in trigger conditions — merge the skills or add an explicit "NOT for X — use [other]" boundary
 - Always test with a fresh session before considering it done
 - Use mandatory language ("MUST", "NEVER") for critical behavioral rules — advisory language gets ignored under pressure
 
