@@ -38,3 +38,6 @@ coverage/
 
 # Logs
 *.log
+
+# Claude Code machine-local overrides (the shared .claude/settings.json IS committed)
+.claude/settings.local.json
