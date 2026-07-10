@@ -113,3 +113,24 @@ known issues" to Linear (it churns); keep filling-out notes (lines 138+) out of 
 already the design, worth an explicit warning. Collapse SKILL-INDEX.md into ROUTER.md (single human-facing index).
 
 **Projected post-cleanup tax:** ~3,100 tokens (1.6% of 200k) — roughly half.
+
+---
+
+## 5. Execution results (2026-07-10, same day)
+
+The recommendations above were executed on this branch. Measured with the same method (~4 chars/token):
+
+| ALWAYS LOADED component | Before | After | How |
+|---|---|---|---|
+| Skill frontmatter | ~2,793 tok (33 skills) | ~1,817 tok (23 skills) | 7 speculative archived; 4 UI skills merged into `ui-quality`; every description rewritten as a ≤60-word trigger contract |
+| Subagent descriptions | ~216 tok (4 agents) | ~109 tok (2 agents) | code-reviewer + research-scout archived (duplicated code-review skill / built-in Explore) |
+| Rule files | ~1,645 tok | ~1,137 tok | Compressed to bullet density; hook-enforced lines removed; ui.md deduped against ui-quality |
+| CLAUDE.md (installable template) | ~1,263 tok | ~398 tok | Churning state → STATE.md pointer; skills section cut; conventions → rules; enforcement → hooks |
+| **Total** | **~5,917 tok (3.0%)** | **~3,462 tok (1.7%)** | **−41.5%** |
+
+Verification notes:
+- **Zero capability loss:** every archived skill/agent is restorable with one `git mv` (`skills/archive/README.md`); merged UI content lives complete in `ui-quality`; all cross-references updated (no dangling skill names).
+- **Archive is outside the scan path:** the CLI's discovery glob is `skills/*/SKILL.md` (one level, verified against the claude 2.1.206 bundle); nothing in `skills/archive/<name>/` matches.
+- **Hooks byte-identical** to the pre-audit baseline (`git diff b8af7fd..HEAD -- hooks/ scripts/` is empty).
+- **All 23 descriptions ≤60 words; all bodies ≤365 lines** (cap 500). SKILL-INDEX.md collapsed into ROUTER.md.
+- Caveat: per `quickstart/CLAUDE.md`, rule files load on demand rather than automatically; excluding them, the tax is ~2,325 tok (1.2%), a 45.6% reduction against the equivalent ~4,272 tok baseline.
