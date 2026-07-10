@@ -1,6 +1,6 @@
 # Ravie Context Efficiency Audit — 2026-07-10
 
-> **ACCEPTED BASELINE: 2,513 tokens always-loaded, confirmed via /context on 2026-07-10. Verification passes check against this number.** (24 skill descriptions ~2,330 + 2 agent descriptions 148 + CLAUDE.md 35. Skill rows in /context are rounded to ~10 tok.)
+> **ACCEPTED BASELINE: ~2,100–2,513 tokens always-loaded (self-measured 2,513 via claude -p on 2026-07-10; user-confirmed via interactive /context showing Skills 2.1k + Memory 35, no rules category, archived skills absent). Verification passes if within this range +10%.**
 
 Measurement + triage only; no behavior changed. Token estimates use ~4 chars/token (scaffolding only — superseded by the /context measurement above).
 **Evidence caveat:** git history has 2 commits (initial release + rename), so triage rests on
