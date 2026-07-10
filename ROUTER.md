@@ -8,7 +8,7 @@ Human-readable reference: every active skill, what routes where, and the system-
 - Supabase = database/auth/storage. Vercel = frontend deploys and previews. VPS = scheduled automation runtime.
 - Claude Code is primary implementation; Claude Desktop for connected-app planning; ChatGPT for second opinions.
 
-## Skill index (23 active)
+## Skill index (24 active)
 
 | Request type / trigger | Skill | Group |
 |---|---|---|
@@ -35,6 +35,7 @@ Human-readable reference: every active skill, what routes where, and the system-
 | Production/live failure | `observability-incident-loop` | Operational |
 | Onboard a repo to Claude Code | `project-control-plane` | Meta |
 | Create/improve/evaluate a skill | `skill-creator` | Meta |
+| "Wrap up" / "save state" / stopping work | `session-handoff` | Meta |
 
 Archived (restorable via `git mv skills/archive/<name> skills/<name>`): router, permission-guardian, pattern-learner, workflow-evaluator, memory-import-sanitizer, system-of-record-governance, client-boundary-guard, plus the four skills merged into `ui-quality` (accessibility-ui, responsive-ui, design-system-ui, ui-copy). See `skills/archive/README.md`.
 

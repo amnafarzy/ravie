@@ -1,6 +1,6 @@
 # Ravie
 
-A four-layer operating system for Claude Code. 23 active skills, 5 rule reference files, 2 subagents, and 4 hook scripts — built for solo founders and designer-developers who are tired of re-explaining themselves every AI session.
+A four-layer operating system for Claude Code. 24 active skills, 5 rule reference files, 2 subagents, and 4 hook scripts — built for solo founders and designer-developers who are tired of re-explaining themselves every AI session.
 
 ---
 
@@ -30,7 +30,7 @@ Four layers, each with a specific job:
 ├─────────────────────────────────────────────┤
 │  Layer 4: Skills + Agents                   │
 │  skills/ + agents/                          │
-│  → 23 specific workflows, 2 subagents       │
+│  → 24 specific workflows, 2 subagents       │
 └─────────────────────────────────────────────┘
 ```
 
@@ -101,7 +101,7 @@ Superpowers handles workflow discipline (brainstorm → plan → TDD). Karpathy 
 
 ## What's inside
 
-### 23 active skills
+### 24 active skills
 
 **Daily drivers** (fully expanded with commands, templates, failure modes):
 
@@ -129,7 +129,7 @@ Superpowers handles workflow discipline (brainstorm → plan → TDD). Karpathy 
 
 **Meta & operations** — the system improves and runs itself:
 
-`skill-creator` · `decision-log-adr` · `project-control-plane` · `daily-brief` · `observability-incident-loop`
+`skill-creator` · `session-handoff` · `decision-log-adr` · `project-control-plane` · `daily-brief` · `observability-incident-loop`
 
 Speculative and merged skills live in `skills/archive/` — restorable with one `git mv` (see `skills/archive/README.md`).
 

@@ -36,7 +36,7 @@ Copy the template below into your project root as `CLAUDE.md` and fill in the br
 
 ## Current state
 
-Active priorities, in-flight work, and known issues live in `STATE.md` — read it at session start. Update `STATE.md` (not this file) when state changes.
+Read docs/STATE.md before starting work; treat its "Now" section as the default task list. (Updated via the `session-handoff` skill — say "wrap up" — never by hand-editing this file.)
 
 ## Non-negotiables
 
@@ -53,5 +53,5 @@ Active priorities, in-flight work, and known issues live in `STATE.md` — read 
 
 - **Where the rest went:** branch/commit conventions → `rules/git.md`; DB rules → `rules/supabase.md`; UI rules → `rules/ui.md` (read on demand when the task touches them). Skill routing → skill descriptions themselves (auto-loaded) and `ROUTER.md` for humans. Enforcement ("never push to main", "never commit .env", "no secret reads") → Ravie hooks, which cost zero tokens and can't be ignored — don't restate them here.
 - **Never duplicate content between CLAUDE.md and a skill or rule file** — single source of truth, pointers only.
-- **Create `STATE.md`** next to this file: 5-10 bullets of current priorities, in-flight work, known issues. It churns; CLAUDE.md shouldn't.
+- **`docs/STATE.md`** is the 40-line rolling dashboard of priorities, in-flight work, and decisions. The `session-handoff` skill creates and maintains it — say "wrap up" at the end of a session. It churns; CLAUDE.md shouldn't.
 - **Grow it from friction:** every time you re-explain something in a session, add one line here (if every session needs it) or to the relevant rule/skill (if not).

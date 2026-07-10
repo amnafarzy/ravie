@@ -26,7 +26,7 @@
 
 ## Current state
 
-Priorities and known issues live in `STATE.md` — read it at session start; update it, not this file.
+Read docs/STATE.md before starting work; treat its "Now" section as the default task list. (The `session-handoff` skill maintains it — say "wrap up" when stopping.)
 
 ## Non-negotiables
 
