@@ -4,9 +4,8 @@
 
 ## Now (max 5 bullets — in-flight work, one line each: what + where + next step)
 
-- Merge `claude/ravie-context-audit-vlfzjp` → main before any worktree use — claude --worktree branches from origin/HEAD, so unmerged worktrees run the pre-upgrade config
-- Context-efficiency overhaul done on branch `claude/ravie-context-audit-vlfzjp` (13 commits) — next: open PR and merge to main
-- Cross-session memory (docs/STATE.md + skills/session-handoff/ + root CLAUDE.md pointer) added — next: include in the same PR
+- STATE.md post-merge cleanup sitting on `claude/ravie-context-audit-vlfzjp` (restarted from main) — next: merge this one-file change
+- Update GitHub repo About text at github.com/amnafarzy/ravie settings — still says "33 skills, 4 agents"; should read 25 skills, 2 subagents
 
 ## Blocked (max 3 bullets — what's stuck and on what)
 
@@ -16,7 +15,7 @@
 
 - Ravie installs user-scope from the repo's own directory marketplace (.claude/settings.json) — project scope is path-keyed and silently skips worktrees
 - Accepted ~92-token always-loaded cost for continuity system (CLAUDE.md pointer + session-handoff frontmatter); final baseline recorded in audit doc
-- Accepted baseline = ~2,100–2,513 tok always-loaded, twice-measured via /context — rules confirmed on-demand, 4-chars/token retired
+- Accepted baseline = 2,603 tok always-loaded at 25 skills (going-forward, /context-measured; see docs/audits/) — rules confirmed on-demand, 4-chars/token retired
 - Archive relocated to repo-root archive/ to remove CLI-version dependency
 - Continuity system = docs/STATE.md (≤40 lines) + one CLAUDE.md pointer line; skill body loads on demand
 - Rule files compressed to bullets; enforcement lives in hooks, never restated in prose (rules/\*.md)
