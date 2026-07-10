@@ -1,9 +1,9 @@
 ---
 name: deploy-ready
 description: >-
-  Use this whenever a branch or PR is about to merge or deploy to production — the user says "ship
-  it", "ready to merge", "deploy" — especially with new env vars, external services, metadata, or
-  secrets. Runs the release checklist. NOT browser QA of a preview URL — that's vercel-preview-qa.
+  Use this whenever a branch or PR is about to merge or deploy to production — "ship it", "ready to
+  merge", "deploy" — especially with new env vars, external services, metadata, or secrets. Runs the
+  release checklist. NOT preview-URL browser QA — that's vercel-preview-qa.
 ---
 
 # deploy-ready

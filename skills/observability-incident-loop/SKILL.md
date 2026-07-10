@@ -1,10 +1,9 @@
 ---
 name: observability-incident-loop
 description: >-
-  Use this ONLY for production or live failures: Vercel production errors, Supabase outages, GitHub
-  Actions failing on main, automation-server crashes, or user-reported production bugs. Runs the
-  incident loop: stabilize, diagnose, fix, prevent. For local, preview, or pre-merge failures use
-  debug-root-cause.
+  Use this ONLY for production failures: Vercel production errors, Supabase outages, Actions failing
+  on main, automation crashes, user-reported live bugs. Runs the incident loop: stabilize, diagnose,
+  fix, prevent. Local, preview, or pre-merge failures → debug-root-cause.
 ---
 
 # observability-incident-loop

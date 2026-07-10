@@ -3,8 +3,8 @@ name: debug-root-cause
 description: >-
   Use this whenever something fails before it has shipped — failing tests, broken builds, wrong UI
   behavior, preview errors — and the cause is unknown, even if the user just pastes an error.
-  Diagnose before fixing. For failures in production (main branch, live users) use observability-
-  incident-loop instead.
+  Diagnose before fixing. Production failures (main branch, live users) → observability-incident-
+  loop.
 ---
 
 # debug-root-cause

@@ -2,9 +2,9 @@
 name: linear-operator
 description: >-
   Use this whenever the user mentions Linear or task tracking — creating, updating, splitting,
-  linking, triaging, or summarizing issues, projects, blockers, or acceptance criteria — even if
-  they just say "make a ticket for that". NOT for durable knowledge (notion-brain) or implementing
-  the issue (issue-to-pr).
+  linking, triaging, or summarizing issues, projects, blockers, or acceptance criteria — even just
+  "make a ticket for that". NOT for durable knowledge (notion-brain) or implementation (issue-to-
+  pr).
 ---
 
 # linear-operator

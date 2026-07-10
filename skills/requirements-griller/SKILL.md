@@ -1,9 +1,9 @@
 ---
 name: requirements-griller
 description: >-
-  Use this whenever a request or idea is vague, ambiguous, or high-stakes and would otherwise become
-  guesswork — the user says "I want something like…" or "can we add…" without acceptance criteria.
-  Asks one question at a time until scope is clear. Output feeds idea-to-prd-tracer or issue-to-pr.
+  Use this whenever a request or idea is vague, ambiguous, or high-stakes — "I want something
+  like…", "can we add…" with no acceptance criteria. Asks one question at a time until scope is
+  clear. Output feeds idea-to-prd-tracer or issue-to-pr.
 ---
 
 # requirements-griller

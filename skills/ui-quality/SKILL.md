@@ -1,7 +1,10 @@
 ---
 name: ui-quality
 description: >-
-  Use this whenever you build or review ANY frontend UI — components, layouts, forms, styling, or user-facing text — even if the user just says "build the page". Covers design tokens, responsive/mobile-first layout, accessibility (keyboard, ARIA, contrast), and UI copy (buttons, errors, empty states). NOT for animation (animation-motion), WebGL (threejs-motion-performance), or live-preview QA (vercel-preview-qa).
+  Use this whenever you build or review ANY frontend UI — components, layouts, forms, styling, or
+  user-facing text — even if the user just says "build the page". Covers design tokens, mobile-first
+  layout, accessibility, and UI copy. NOT for animation (animation-motion), WebGL (threejs-motion-
+  performance), or preview QA (vercel-preview-qa).
 ---
 
 # ui-quality

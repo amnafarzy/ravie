@@ -2,8 +2,8 @@
 name: current-docs-guard
 description: >-
   Use this before implementing against any version-sensitive or unverified API: package upgrades,
-  SDK and framework APIs (Next.js, Supabase, Vercel, Three.js, MCP, auth providers, browser APIs),
-  or whenever you are about to write code from memory of an external API not verified this session.
+  SDK and framework APIs (Next.js, Supabase, Vercel, Three.js, MCP, auth, browser APIs), or any
+  external API you would otherwise write from memory unverified this session.
 ---
 
 # current-docs-guard

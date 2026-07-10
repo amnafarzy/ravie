@@ -1,10 +1,9 @@
 ---
 name: code-review
 description: >-
-  Use this after any non-trivial code change, AI-generated or human, before committing: new
-  components, services, API routes, module-boundary changes, or anything touching auth, permissions,
-  database, or RLS. Fire it even if the user only says "looks done" or "ready to commit". Skip only
-  typo or docs-only edits.
+  Use this after any non-trivial code change, AI or human, before committing: new components,
+  services, API routes, module boundaries, or anything touching auth, permissions, database, or RLS
+  — even if the user only says "ready to commit". Skip only typo or docs-only edits.
 ---
 
 # code-review
