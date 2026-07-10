@@ -9,7 +9,7 @@ description: >-
 
 # ui-quality
 
-One pass, four lenses: design-system consistency, responsive layout, accessibility, and UI copy. Merged from the former accessibility-ui, responsive-ui, design-system-ui, and ui-copy skills (originals in `skills/archive/`).
+One pass, four lenses: design-system consistency, responsive layout, accessibility, and UI copy. Merged from the former accessibility-ui, responsive-ui, design-system-ui, and ui-copy skills (originals in `archive/skills/`).
 
 ## Purpose
 

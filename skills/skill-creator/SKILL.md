@@ -146,5 +146,5 @@ When creating or revising a skill, produce a complete skill package plan and the
 
 ## Connects to
 
-- This skill also owns pattern-mining and skill-health evaluation (deeper checklists archived in `skills/archive/pattern-learner/` and `skills/archive/workflow-evaluator/`)
+- This skill also owns pattern-mining and skill-health evaluation (deeper checklists archived in `archive/skills/pattern-learner/` and `archive/skills/workflow-evaluator/`)
 - `project-control-plane` — for updating CLAUDE.md to reference new skills

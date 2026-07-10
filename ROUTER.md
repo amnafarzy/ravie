@@ -37,7 +37,7 @@ Human-readable reference: every active skill, what routes where, and the system-
 | Create/improve/evaluate a skill | `skill-creator` | Meta |
 | "Wrap up" / "save state" / stopping work | `session-handoff` | Meta |
 
-Archived (restorable via `git mv skills/archive/<name> skills/<name>`): router, permission-guardian, pattern-learner, workflow-evaluator, memory-import-sanitizer, system-of-record-governance, client-boundary-guard, plus the four skills merged into `ui-quality` (accessibility-ui, responsive-ui, design-system-ui, ui-copy). See `skills/archive/README.md`.
+Archived (restorable via `git mv archive/skills/<name> skills/<name>`): router, permission-guardian, pattern-learner, workflow-evaluator, memory-import-sanitizer, system-of-record-governance, client-boundary-guard, plus the four skills merged into `ui-quality` (accessibility-ui, responsive-ui, design-system-ui, ui-copy). See `archive/README.md`.
 
 ## Routing checks
 

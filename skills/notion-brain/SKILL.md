@@ -210,7 +210,7 @@ For tiny updates (a single line, a status change), drafting is overkill — but 
 - Creating new Notion databases
 - Restructuring existing databases
 - Deleting pages
-- Importing old memory (redact + dedupe first — checklist in `skills/archive/memory-import-sanitizer/`)
+- Importing old memory (redact + dedupe first — checklist in `archive/skills/memory-import-sanitizer/`)
 - Adding client-sensitive content
 - Changing durable architectural decisions
 
@@ -225,7 +225,7 @@ For tiny updates (a single line, a status change), drafting is overkill — but 
 - Never duplicate GitHub technical facts when linking is enough (e.g., don't paste schema definitions; link to the migration file)
 - Never use Notion as a task queue — Linear is for that
 - Never use Notion as a chat — that's what chat is for
-- Never import old memory without redaction and deduplication (`skills/archive/memory-import-sanitizer/`)
+- Never import old memory without redaction and deduplication (`archive/skills/memory-import-sanitizer/`)
 - Never mix client knowledge into general operating workspace
 - Never delete pages — supersede or archive instead
 - Never let pages drift without review triggers if they may decay
@@ -239,7 +239,7 @@ For tiny updates (a single line, a status change), drafting is overkill — but 
 - `daily-brief` — produces briefs that this skill writes
 - `skill-creator` — produces patterns that this skill writes
 - `linear-operator` — task status lives in Linear, never Notion
-- Archived references: `skills/archive/` holds memory-import-sanitizer, system-of-record-governance, and client-boundary-guard checklists
+- Archived references: `archive/skills/` holds memory-import-sanitizer, system-of-record-governance, and client-boundary-guard checklists
 
 ## Common failure modes
 
@@ -253,6 +253,6 @@ For tiny updates (a single line, a status change), drafting is overkill — but 
 
 **Notion competes with Linear** — Tasks live in Notion as bullet points. They drift from Linear. Linear is the task system. Notion only describes tasks at the project level (in PRDs, decisions, briefs).
 
-**Client data in general workspace** — A project PRD references client X by name. That's a leak. Keep client names out of the general workspace (checklist: `skills/archive/client-boundary-guard/`).
+**Client data in general workspace** — A project PRD references client X by name. That's a leak. Keep client names out of the general workspace (checklist: `archive/skills/client-boundary-guard/`).
 
 **Death by template** — Every template creates 8 sections, most empty. Templates should encode minimums, not exhaustive structure.

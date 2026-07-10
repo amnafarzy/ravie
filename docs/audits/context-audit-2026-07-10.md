@@ -129,8 +129,8 @@ The recommendations above were executed on this branch. Measured with the same m
 | **Total** | **~5,917 tok (3.0%)** | **~3,462 tok (1.7%)** | **−41.5%** |
 
 Verification notes:
-- **Zero capability loss:** every archived skill/agent is restorable with one `git mv` (`skills/archive/README.md`); merged UI content lives complete in `ui-quality`; all cross-references updated (no dangling skill names).
-- **Archive is outside the scan path:** the CLI's discovery glob is `skills/*/SKILL.md` (one level, verified against the claude 2.1.206 bundle); nothing in `skills/archive/<name>/` matches.
+- **Zero capability loss:** every archived skill/agent is restorable with one `git mv` (`archive/README.md`); merged UI content lives complete in `ui-quality`; all cross-references updated (no dangling skill names).
+- **Archive is outside the scan path:** the CLI's discovery glob is `skills/*/SKILL.md` (one level, verified against the claude 2.1.206 bundle), which the original nested archive location did not match; the archive has since been relocated to repo-root `archive/`, outside skills/ and agents/ entirely, so no discovery mechanism, current or future, can load it.
 - **Hooks byte-identical** to the pre-audit baseline (`git diff b8af7fd..HEAD -- hooks/ scripts/` is empty).
 - **All 23 descriptions ≤60 words; all bodies ≤365 lines** (cap 500). SKILL-INDEX.md collapsed into ROUTER.md.
 - Caveat: per `quickstart/CLAUDE.md`, rule files load on demand rather than automatically; excluding them, the tax is ~2,325 tok (1.2%), a 45.6% reduction against the equivalent ~4,272 tok baseline.

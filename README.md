@@ -131,7 +131,7 @@ Superpowers handles workflow discipline (brainstorm → plan → TDD). Karpathy 
 
 `skill-creator` · `session-handoff` · `decision-log-adr` · `project-control-plane` · `daily-brief` · `observability-incident-loop`
 
-Speculative and merged skills live in `skills/archive/` — restorable with one `git mv` (see `skills/archive/README.md`).
+Speculative and merged skills live in `archive/skills/` — restorable with one `git mv` (see `archive/README.md`).
 
 [Full index →](ROUTER.md)
 
@@ -156,7 +156,7 @@ Spawn in isolated context to avoid confirmation bias:
 | `security-auditor` | Auth, RLS, secrets, injection review |
 | `ux-checker` | State completeness, responsive, accessibility |
 
-(`code-reviewer` and `research-scout` are archived in `agents/archive/` — the `code-review` skill and the built-in Explore agent cover them.)
+(`code-reviewer` and `research-scout` are archived in `archive/agents/` — the `code-review` skill and the built-in Explore agent cover them.)
 
 ### 3 guard hooks plus auto-format
 

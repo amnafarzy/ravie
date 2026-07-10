@@ -219,7 +219,7 @@ Periodic (weekly review):
 - `notion-brain` — for PRD/decision linking
 - `github-operator` — for PR linking
 - `daily-brief` — calls this for queue summary
-- `notion-brain` — when Linear and Notion disagree, Linear wins for task status (see `skills/archive/system-of-record-governance/` for the full conflict table)
+- `notion-brain` — when Linear and Notion disagree, Linear wins for task status (see `archive/skills/system-of-record-governance/` for the full conflict table)
 
 ## Common failure modes
 
