@@ -41,3 +41,5 @@ coverage/
 
 # Claude Code machine-local overrides (the shared .claude/settings.json IS committed)
 .claude/settings.local.json
+# claude --worktree checkouts live inside the repo
+.claude/worktrees/
