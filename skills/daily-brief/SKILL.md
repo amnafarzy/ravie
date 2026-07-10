@@ -1,9 +1,10 @@
 ---
 name: daily-brief
 description: >-
-  Use this skill when starting a workday, returning after a context break, preparing for planning, or needing a concise cross-system state summary from Linear, GitHub, Vercel, Supabase, automation servers, and Notion. Do not use when the user asks for a single-system lookup or a deep investigation of one issue.
+  Use this whenever the user starts a workday or says "where were we", "what's the status", "catch
+  me up", or needs one summary spanning Linear, GitHub, Vercel, Supabase, and Notion. NOT for
+  single-system lookups — query that system directly.
 ---
-
 
 # daily-brief
 
@@ -12,17 +13,6 @@ Generates a structured morning brief across all your systems so you don't open 6
 ## Purpose
 
 Pull active state from Linear, GitHub, Vercel, Supabase, VPS/automation server, and Notion. Surface blockers, urgent items, and the highest-leverage focus task for today. Output a concise brief — to chat by default, to a Notion daily brief page if approved.
-
-## When to use this
-
-- Start of workday (manual or scheduled via VPS/automation server)
-- Returning from a context-break (sick day, weekend, vacation)
-- Before a planning session
-- When you've lost track of what's in flight
-
-## When NOT to use this
-
-- Do not use when the user asks for a single-system lookup or a deep investigation of one issue.
 
 ## Stack integration
 
@@ -187,7 +177,7 @@ Default format below. Adjust if you want shorter / different sections.
 - `github-operator` — for PR/check details
 - `automation-sre` — for routing to VPS/automation server failure investigation
 - `observability-incident-loop` — invoke if production incident is found
-- `permission-guardian` — for any escalation requests
+- `PERMISSION-MODEL.md` (repo root) — for any escalation requests
 
 ## Variants
 
@@ -195,7 +185,7 @@ Default format below. Adjust if you want shorter / different sections.
 Skip stale/deferred section. Focus on top focus, urgent, and approvals.
 
 **Weekly version:**
-Run `pattern-learner` skill instead, which produces a different output (patterns + skill updates) rather than a daily snapshot.
+Run `skill-creator` instead, which produces a different output (patterns + skill updates) rather than a daily snapshot.
 
 **Pre-meeting brief:**
 Add a section "What's relevant for [meeting topic]" pulling Notion docs tagged with that topic.

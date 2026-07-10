@@ -1,9 +1,10 @@
 ---
 name: growth-launch-pack
 description: >-
-  Use this skill when preparing product positioning, idea viability, competitor research, SEO briefs, CRO reviews, launch plans, landing page strategy, or growth artifacts. Do not use for implementation, technical deployment readiness, or unclear product ideas that still need requirements-griller.
+  Use this whenever the user asks for positioning, competitor research, idea-viability checks, SEO
+  briefs, CRO review, landing-page strategy, or launch plans — any marketing or growth artifact,
+  even if they just say "how do I launch this". NOT for implementation or code.
 ---
-
 
 # growth-launch-pack
 
@@ -12,19 +13,6 @@ Frameworks for positioning, validating, launching, and growing a product. The ma
 ## Purpose
 
 Provide reusable frameworks for: idea validation, competitive analysis, positioning, target segments, SEO content strategy, CRO analysis, and launch planning. Not a marketing automation tool — a thinking framework that produces artifacts you can act on.
-
-## When to use this
-
-- Preparing to launch [Project A], [Project B], or a new product
-- Writing landing page copy and need positioning clarity
-- Evaluating whether an idea is worth building
-- Analyzing competitors before entering a market
-- Planning content strategy for organic growth
-- Reviewing a page/flow for conversion optimization
-
-## When NOT to use this
-
-- Do not use for implementation, technical deployment readiness, or unclear product ideas that still need requirements-griller.
 
 ## Frameworks included
 
@@ -229,7 +217,7 @@ Depends on which framework is invoked. Each framework has its own template above
 - `requirements-griller` — use deep interrogation mode for validating the idea before positioning
 - `requirements-griller` — for scoping the MVP after validation
 - `notion-brain` — for storing competitive research and positioning docs
-- `ui-copy` — for writing the actual interface copy after positioning is clear
+- `ui-quality` — for writing the actual interface copy after positioning is clear
 - `deploy-ready` — for the technical side of launch readiness
 
 ## Common failure modes

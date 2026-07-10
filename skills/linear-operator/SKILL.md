@@ -1,9 +1,11 @@
 ---
 name: linear-operator
 description: >-
-  Use this skill when creating, updating, splitting, linking, triaging, summarizing, or cleaning Linear issues, projects, blockers, acceptance criteria, and execution status. Do not use for durable knowledge, code changes, PR management, or Notion/GitHub records except to link back to Linear.
+  Use this whenever the user mentions Linear or task tracking — creating, updating, splitting,
+  linking, triaging, or summarizing issues, projects, blockers, or acceptance criteria — even if
+  they just say "make a ticket for that". NOT for durable knowledge (notion-brain) or implementing
+  the issue (issue-to-pr).
 ---
-
 
 # linear-operator
 
@@ -12,21 +14,6 @@ Manage Linear as the execution system of record. The skill that other skills cal
 ## Purpose
 
 Treat Linear as the single source of truth for execution. Read issues with proper context. Create issues with acceptance criteria. Update statuses based on real evidence. Resist using Linear as a knowledge base or chat tool.
-
-## When to use this
-
-- Creating new Linear issues from PRDs or notes
-- Updating issue status as work progresses
-- Splitting large issues into smaller ones
-- Cleaning up stale issues
-- Adding acceptance criteria to existing issues
-- Linking PRs, decisions, and Notion docs to issues
-- Triaging blockers
-- Generating project status summaries
-
-## When NOT to use this
-
-- Do not use for durable knowledge, code changes, PR management, or Notion/GitHub records except to link back to Linear.
 
 ## Stack integration
 
@@ -150,7 +137,7 @@ When an issue grew beyond its original scope:
 
 ### Cleanup
 
-Periodic (weekly during `pattern-learner`):
+Periodic (weekly review):
 - Issues with no movement in 30+ days: comment asking if still relevant, move to abandoned/archive if not
 - Issues with no acceptance criteria: backfill or close
 - Issues with no clear owner: assign or close
@@ -232,8 +219,7 @@ Periodic (weekly during `pattern-learner`):
 - `notion-brain` — for PRD/decision linking
 - `github-operator` — for PR linking
 - `daily-brief` — calls this for queue summary
-- `pattern-learner` — calls this for weekly cleanup
-- `system-of-record-governance` — when Linear and Notion conflict
+- `notion-brain` — when Linear and Notion disagree, Linear wins for task status (see `skills/archive/system-of-record-governance/` for the full conflict table)
 
 ## Common failure modes
 

@@ -1,9 +1,10 @@
 ---
 name: issue-to-pr
 description: >-
-  Use this skill when the user has an approved Linear issue with acceptance criteria and wants to implement it end-to-end: branch creation, tracer bullet, checks, preview, and PR. Do not use for vague bugs, exploration, multi-issue refactors, or work without acceptance criteria.
+  Use this whenever the user wants to implement an approved Linear issue that has acceptance
+  criteria — "build PROJ-42", "implement this issue", "pick up the next ticket". Covers the full
+  loop: branch, tracer bullet, checks, preview, PR. The daily driver for feature work.
 ---
-
 
 # issue-to-pr
 
@@ -12,24 +13,6 @@ The daily driver. Takes one approved Linear issue and produces a merged-ready PR
 ## Purpose
 
 Execute one approved Linear issue through branch creation, tracer bullet, full implementation, checks, Vercel preview QA, and a clean PR linked back to Linear.
-
-## When to use this
-
-Trigger this skill when:
-- A Linear issue exists with status "Ready for Dev" or equivalent
-- Acceptance criteria are written in the issue
-- The repo and target branch are clear
-- The work is scoped to one issue (not a multi-issue refactor)
-
-Don't use this skill for:
-- Vague requests without a Linear issue → run `requirements-griller` first
-- Bug investigation where root cause is unknown → run `debug-root-cause` first
-- Multi-issue refactors → break into separate issues, run this per issue
-- Spike / exploration work → that's not a PR-track task
-
-## When NOT to use this
-
-- Do not use for vague bugs, exploration, multi-issue refactors, or work without acceptance criteria.
 
 ## Stack integration
 

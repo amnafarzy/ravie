@@ -1,9 +1,11 @@
 ---
 name: observability-incident-loop
 description: >-
-  Use this skill when production or operational systems fail: Vercel errors, Supabase issues, automation/server failures, GitHub Actions failures on main, user-reported production bugs, or recurring monitoring warnings. Do not use for ordinary local debugging or unshipped preview QA unless it indicates a production incident.
+  Use this ONLY for production or live failures: Vercel production errors, Supabase outages, GitHub
+  Actions failing on main, automation-server crashes, or user-reported production bugs. Runs the
+  incident loop: stabilize, diagnose, fix, prevent. For local, preview, or pre-merge failures use
+  debug-root-cause.
 ---
-
 
 # observability-incident-loop
 
@@ -12,19 +14,6 @@ Production incident → triage → fix → Linear task → runbook update. The s
 ## Purpose
 
 Convert failures across Vercel, Supabase, GitHub Actions, and VPS/automation into a structured incident response: triage, fix, document, and prevent recurrence.
-
-## When to use this
-
-- Vercel deployment fails or shows errors
-- Supabase returns errors or performance degrades
-- VPS/automation jobs fail or produce unexpected output
-- GitHub Actions CI fails on main branch
-- Users report errors in production
-- Recurring warnings in any monitoring system
-
-## When NOT to use this
-
-- Do not use for ordinary local debugging or unshipped preview QA unless it indicates a production incident.
 
 ## Process
 

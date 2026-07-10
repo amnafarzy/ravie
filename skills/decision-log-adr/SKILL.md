@@ -1,9 +1,10 @@
 ---
 name: decision-log-adr
 description: >-
-  Use this skill when a durable technical, product, scope, tool, convention, or trade-off decision should be recorded so future sessions do not re-litigate it. Do not use for temporary notes, unresolved debates, or routine task status that belongs in Linear.
+  Use this whenever a durable decision gets made — tech choice, tool, convention, scope cut, trade-
+  off — or the user says "let's go with", "we decided", or "from now on". Record it as an ADR so
+  future sessions don't re-litigate. NOT for task status (Linear) or temporary notes.
 ---
-
 
 # decision-log-adr
 
@@ -12,18 +13,6 @@ Record durable product or technical decisions so future sessions don't re-litiga
 ## Purpose
 
 When a meaningful decision is made during development — architecture, tool choice, scope cut, trade-off — log it with context, alternatives considered, and rationale. Future sessions read these decisions and respect them.
-
-## When to use this
-
-- Choosing between technical approaches (e.g., server actions vs API routes)
-- Deciding to use or reject a tool/library
-- Cutting scope on a feature
-- Setting a convention that future work should follow
-- Making a trade-off that future-you will question
-
-## When NOT to use this
-
-- Do not use for temporary notes, unresolved debates, or routine task status that belongs in Linear.
 
 ## Process
 
@@ -76,7 +65,7 @@ The ADR template above, filled in.
 - `idea-to-prd-tracer` — decisions surface during planning
 - `notion-brain` — for storing decisions in Notion
 - `github-operator` — for storing ADRs in the repo
-- `pattern-learner` — feed recurring decision patterns into the system
+- `skill-creator` — codify recurring decision patterns
 
 ## Common failure modes
 

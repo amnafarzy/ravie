@@ -1,9 +1,10 @@
 ---
 name: skill-creator
 description: >-
-  Use this skill when creating or improving a Ravie skill from a repeated workflow, repeated correction, pattern-learner finding, or existing skill failure. Do not use for one-off tasks, generic documentation, or workflows already covered by an existing skill.
+  Use this whenever creating or improving a Ravie skill — the user says "make this a skill", "we
+  keep repeating this", or a workflow or correction has recurred enough to codify. Also owns
+  evaluating existing skills after real usage. NOT for one-off tasks.
 ---
-
 
 # skill-creator
 
@@ -12,18 +13,6 @@ Create new skills from observed patterns. When you find yourself re-explaining t
 ## Purpose
 
 Turn a repeated pattern, workflow, or correction into a valid SKILL.md file with YAML frontmatter so future Claude Code sessions can match it from the description. Also used to improve existing skills based on real friction.
-
-## When to use this
-
-- You've corrected the agent on the same thing 3+ times across sessions
-- A workflow you repeat doesn't have a skill yet
-- An existing skill keeps producing wrong output and needs rewriting
-- `pattern-learner` identified a recurring pattern worth formalizing
-- You want to extract a reusable workflow from a completed project
-
-## When NOT to use this
-
-- Do not use for one-off tasks, generic documentation, or workflows already covered by an existing skill.
 
 ## Process
 
@@ -46,7 +35,7 @@ What situation should activate this skill? The answer belongs first in YAML fron
 - Good: "when creating a new React component that needs to connect to Supabase data"
 
 ### 2. Extract the process
-From your past sessions or the pattern-learner output, document what the correct process actually is. Include:
+From your past sessions and repeated corrections, document what the correct process actually is. Include:
 - Steps in order
 - Commands to run
 - Files to check
@@ -68,15 +57,6 @@ description: Use this skill when [specific trigger conditions Claude should matc
 
 ## Purpose
 [2-3 sentences on why this exists.]
-
-## When to use this
-**You MUST use this skill when:**
-- [Specific trigger 1]
-- [Specific trigger 2]
-
-## When NOT to use this
-- [Thing this is NOT for]
-- [Other skill to use instead]
 
 ## Process
 ### 1. [First step]
@@ -159,7 +139,7 @@ When creating or revising a skill, produce a complete skill package plan and the
 
 - Never create a skill for a one-time task — skills are for repeated patterns
 - Never create a skill that duplicates an existing one — check SKILL-INDEX.md first
-- Never put client-specific content in a reusable skill — use `client-boundary-guard`
+- Never put client-specific content in a reusable skill
 - Always include valid YAML frontmatter before the title with `name` matching the directory and a trigger-focused `description`
 - Always include "When to use this", "When NOT to use this", "Hard rules", "Connects to", and realistic failure modes
 - Always test with a fresh session before considering it done
@@ -167,6 +147,5 @@ When creating or revising a skill, produce a complete skill package plan and the
 
 ## Connects to
 
-- `pattern-learner` — identifies patterns worth formalizing
-- `workflow-evaluator` — evaluates whether existing skills are working
+- This skill also owns pattern-mining and skill-health evaluation (deeper checklists archived in `skills/archive/pattern-learner/` and `skills/archive/workflow-evaluator/`)
 - `project-control-plane` — for updating CLAUDE.md to reference new skills

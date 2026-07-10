@@ -1,9 +1,10 @@
 ---
 name: idea-to-prd-tracer
 description: >-
-  Use this skill when a new feature, founder request, design, prototype, or product idea needs to become a PRD, Linear issues, implementation plan, and first tracer bullet. Do not use for vague ideas that still need requirements-griller, already-approved Linear issues that should go to issue-to-pr, or pure bug investigations.
+  Use this when a clear, validated feature idea needs to become a PRD, Linear issues, and a first
+  tracer-bullet plan — the user says "spec this out", "turn this into issues", "make a PRD". If the
+  idea is still vague or unscoped, run requirements-griller first.
 ---
-
 
 # idea-to-prd-tracer
 
@@ -12,19 +13,6 @@ Convert an idea into a structured PRD, Linear issues, GitHub plan, and a first t
 ## Purpose
 
 Take a rough product idea, founder note, design file, or prototype and produce: a PRD in Notion, broken-down Linear issues with acceptance criteria, a GitHub implementation plan, and a defined tracer bullet. Stop just before implementation.
-
-## When to use this
-
-- New product feature you want to build
-- Idea sparked from a conversation or note
-- Founder request that needs structured planning
-- Figma file that needs implementation planning
-- Lovable prototype that needs translation to production
-- Client request that needs scoping into deliverables
-
-## When NOT to use this
-
-- Do not use for vague ideas that still need requirements-griller, already-approved Linear issues that should go to issue-to-pr, or pure bug investigations.
 
 ## Stack integration
 

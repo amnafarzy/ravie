@@ -1,9 +1,10 @@
 ---
 name: automation-sre
 description: >-
-  Use this skill when creating, modifying, debugging, retiring, or documenting scheduled jobs, cron/systemd timers, VPS or automation-server tasks, retries, health checks, logs, or automation secrets. Do not use for normal app feature work, one-off manual scripts that will not recur, or external writes without explicit approval.
+  Use this whenever the user mentions cron jobs, scheduled tasks, systemd timers, VPS automation,
+  job retries, health checks, or automation secrets — creating, changing, debugging, or retiring
+  them — even if they just say "my nightly job failed".
 ---
-
 
 # automation-sre
 
@@ -12,22 +13,6 @@ Operate your VPS as your background automation runtime. Source-controlled, idemp
 ## Purpose
 
 Manage scheduled jobs, cron entries, systemd timers, and recurring automations on your VPS with: source in GitHub, runbooks in Notion, idempotent execution, proper logging, retries with limits, and explicit approval for production-impacting changes.
-
-## When to use this
-
-- Creating a new scheduled job
-- Modifying an existing job's schedule, code, or env
-- Debugging job failures
-- Reviewing VPS/automation server logs
-- Adding retries or health checks
-- Changing job secrets or env vars
-- Creating runbooks for jobs
-- Retiring automations no longer in use
-- Investigating recurring or silent failures
-
-## When NOT to use this
-
-- Do not use for normal app feature work, one-off manual scripts that will not recur, or external writes without explicit approval.
 
 ## Stack integration
 
@@ -351,13 +336,13 @@ After enabling, verify the first scheduled run actually fires:
 
 ## Connects to
 
-- `permission-guardian` — for tier classification
+- `PERMISSION-MODEL.md` (repo root) — tier classification reference
 - `github-operator` — for source code commits
 - `notion-brain` — for runbook publishing
 - `linear-operator` — for tracking automation work
 - `observability-incident-loop` — invoked when a job's failure is part of an incident
 - `daily-brief` — surfaces automation status
-- `pattern-learner` — surfaces automations that fail repeatedly
+- `skill-creator` — codify automations that fail repeatedly into checks
 
 ## Common failure modes
 

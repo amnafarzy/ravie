@@ -1,9 +1,10 @@
 ---
 name: vercel-preview-qa
 description: >-
-  Use this skill when a PR has a Vercel preview URL and user-facing acceptance criteria need browser QA across happy path, errors, empty states, responsive behavior, and accessibility basics. Do not use without a preview URL or acceptance criteria, for production deploy approval, or for root-cause debugging before the failure is understood.
+  Use this whenever a PR has a Vercel preview URL and needs browser QA against acceptance criteria —
+  happy path, errors, empty states, responsive behavior, a11y basics — even if the user just says
+  "check the preview". Requires a preview URL; pre-merge release checks are deploy-ready.
 ---
-
 
 # vercel-preview-qa
 
@@ -12,17 +13,6 @@ QA a Vercel preview deployment against acceptance criteria before merge. The vis
 ## Purpose
 
 Take a preview URL and acceptance criteria from a Linear issue, and verify that the implementation actually meets the criteria in a real browser environment.
-
-## When to use this
-
-- PR has a Vercel preview URL
-- Changes are user-facing
-- Before marking a PR as ready for review
-- After fixing issues flagged in a previous QA pass
-
-## When NOT to use this
-
-- Do not use without a preview URL or acceptance criteria, for production deploy approval, or for root-cause debugging before the failure is understood.
 
 ## Process
 
@@ -101,8 +91,7 @@ Preview URL: [url]
 ## Connects to
 
 - `issue-to-pr` — invoked after push, before PR finalized
-- `responsive-ui` — for deeper responsive review if needed
-- `accessibility-ui` — for deeper a11y review if needed
+- `ui-quality` — for deeper responsive or a11y review if needed
 - `deploy-ready` — complementary checklist
 
 ## Common failure modes

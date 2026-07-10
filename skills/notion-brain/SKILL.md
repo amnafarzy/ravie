@@ -1,9 +1,10 @@
 ---
 name: notion-brain
 description: >-
-  Use this skill when creating, updating, cleaning, or organizing Notion as durable knowledge for PRDs, decisions, runbooks, briefs, learnings, and sanitized memory imports. Do not use for task status, code truth, deployment status, or any write to Notion without approval.
+  Use this whenever durable knowledge should be written to or found in Notion — PRDs, decisions,
+  runbooks, briefs, learnings — or the user says "save this", "document this", "add to the wiki".
+  Notion writes need approval. NOT for task status — that's Linear.
 ---
-
 
 # notion-brain
 
@@ -12,21 +13,6 @@ Notion is the durable knowledge base. This skill governs what goes there, how it
 ## Purpose
 
 Maintain Notion as the single durable source for PRDs, decisions, runbooks, operating logs, briefs, and project memory. Prevent it from becoming a duplicate task list or a chat dump.
-
-## When to use this
-
-- Creating PRDs from `idea-to-prd-tracer`
-- Logging decisions from `decision-log-adr`
-- Writing runbooks for automations from `automation-sre`
-- Saving daily/weekly briefs from `daily-brief` or `pattern-learner`
-- Updating project memory after significant changes
-- Importing cleaned content from old conversations (via `memory-import-sanitizer`)
-- Cleaning up stale or duplicate pages
-- Reorganizing knowledge structure
-
-## When NOT to use this
-
-- Do not use for task status, code truth, deployment status, or any write to Notion without approval.
 
 ## Stack integration
 
@@ -224,7 +210,7 @@ For tiny updates (a single line, a status change), drafting is overkill — but 
 - Creating new Notion databases
 - Restructuring existing databases
 - Deleting pages
-- Importing old memory (route through `memory-import-sanitizer` first)
+- Importing old memory (redact + dedupe first — checklist in `skills/archive/memory-import-sanitizer/`)
 - Adding client-sensitive content
 - Changing durable architectural decisions
 
@@ -239,7 +225,7 @@ For tiny updates (a single line, a status change), drafting is overkill — but 
 - Never duplicate GitHub technical facts when linking is enough (e.g., don't paste schema definitions; link to the migration file)
 - Never use Notion as a task queue — Linear is for that
 - Never use Notion as a chat — that's what chat is for
-- Never import old memory without `memory-import-sanitizer`
+- Never import old memory without redaction and deduplication (`skills/archive/memory-import-sanitizer/`)
 - Never mix client knowledge into general operating workspace
 - Never delete pages — supersede or archive instead
 - Never let pages drift without review triggers if they may decay
@@ -251,10 +237,9 @@ For tiny updates (a single line, a status change), drafting is overkill — but 
 - `decision-log-adr` — produces decisions that this skill writes
 - `automation-sre` — produces runbooks that this skill writes
 - `daily-brief` — produces briefs that this skill writes
-- `pattern-learner` — produces patterns that this skill writes
-- `memory-import-sanitizer` — sanitizes old content before this skill writes it
-- `system-of-record-governance` — resolves Notion vs Linear vs GitHub conflicts
-- `client-boundary-guard` — enforced for client-facing content
+- `skill-creator` — produces patterns that this skill writes
+- `linear-operator` — task status lives in Linear, never Notion
+- Archived references: `skills/archive/` holds memory-import-sanitizer, system-of-record-governance, and client-boundary-guard checklists
 
 ## Common failure modes
 
@@ -262,12 +247,12 @@ For tiny updates (a single line, a status change), drafting is overkill — but 
 
 **Duplicate PRDs** — Two PRDs for the same feature because no one searched. Always check before creating.
 
-**Stale runbooks** — Runbook says do X, but reality is now Y. Add review triggers. During weekly review (`pattern-learner`), check runbooks against actual practice.
+**Stale runbooks** — Runbook says do X, but reality is now Y. Add review triggers. During weekly review, check runbooks against actual practice.
 
 **No cross-linking** — Pages exist but you can't find them. The graph is the value. Link aggressively.
 
 **Notion competes with Linear** — Tasks live in Notion as bullet points. They drift from Linear. Linear is the task system. Notion only describes tasks at the project level (in PRDs, decisions, briefs).
 
-**Client data in general workspace** — A project PRD references client X by name. That's a leak. Use `client-boundary-guard` for client-adjacent content.
+**Client data in general workspace** — A project PRD references client X by name. That's a leak. Keep client names out of the general workspace (checklist: `skills/archive/client-boundary-guard/`).
 
 **Death by template** — Every template creates 8 sections, most empty. Templates should encode minimums, not exhaustive structure.

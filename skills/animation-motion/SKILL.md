@@ -1,9 +1,10 @@
 ---
 name: animation-motion
 description: >-
-  Use this skill when adding, polishing, or debugging UI transitions and animations, especially before launch or when reviewing prototype motion for production readiness. Do not use for decorative animation without user value, WebGL/Three.js work, or layout/responsive issues that belong to responsive-ui.
+  Use this whenever adding, polishing, or debugging CSS/JS UI transitions or animations — the user
+  says "animate", "transition", "motion", or "feels janky", or motion needs pre-launch polish. NOT
+  for Three.js/WebGL/canvas work — use threejs-motion-performance.
 ---
-
 
 # animation-motion
 
@@ -12,17 +13,6 @@ Restrained, performant motion. Transform and opacity only. Reduced motion respec
 ## Purpose
 
 Add motion that helps users understand state changes, direct attention, and feel the interface responding — without causing jank, nausea, or distraction.
-
-## When to use this
-
-- Adding transitions or animations to components
-- Polishing interactions before launch
-- Fixing animation stutter or jank
-- Reviewing Lovable prototype animations for production-readiness
-
-## When NOT to use this
-
-- Do not use for decorative animation without user value, WebGL/Three.js work, or layout/responsive issues that belong to responsive-ui.
 
 ## Process
 
@@ -83,9 +73,8 @@ Only animate `transform` and `opacity`. These are GPU-composited and don't trigg
 
 ## Connects to
 
-- `accessibility-ui` — reduced motion is an a11y requirement
 - `threejs-motion-performance` — for WebGL/3D motion
-- `design-system-ui` — motion tokens (duration, easing) are part of the system
+- `ui-quality` — reduced-motion support and motion tokens (duration, easing) live in the design system
 
 ## Common failure modes
 

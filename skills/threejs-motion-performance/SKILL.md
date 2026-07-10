@@ -1,9 +1,10 @@
 ---
 name: threejs-motion-performance
 description: >-
-  Use this skill when adding, reviewing, or optimizing Three.js, WebGL, canvas, shaders, GPU-heavy motion, bundle impact, fallbacks, frame rate, or memory cleanup. Do not use for ordinary CSS animation, non-3D UI, or decorative effects that should be removed.
+  Use this whenever the work involves Three.js, WebGL, canvas rendering, shaders, or GPU-heavy
+  effects — adding, reviewing, or optimizing frame rate, bundle impact, fallbacks, or memory
+  cleanup. NOT for CSS/JS UI transitions — use animation-motion.
 ---
-
 
 # threejs-motion-performance
 
@@ -12,17 +13,6 @@ Three.js and WebGL performance discipline. Bundle impact, mobile fallbacks, GPU 
 ## Purpose
 
 Ship WebGL/3D content that's fast on real devices, has proper fallbacks, doesn't leak memory, and respects user preferences.
-
-## When to use this
-
-- Portfolio or landing page with 3D elements
-- Any WebGL, canvas, or shader work
-- Three.js scene optimization
-- Evaluating whether 3D is worth the bundle cost for a given feature
-
-## When NOT to use this
-
-- Do not use for ordinary CSS animation, non-3D UI, or decorative effects that should be removed.
 
 ## Process
 
@@ -79,7 +69,7 @@ For `prefers-reduced-motion: reduce`: stop all animation, show a static frame.
 ## Connects to
 
 - `animation-motion` — for non-WebGL motion guidelines
-- `responsive-ui` — 3D scenes need responsive handling too
+- `ui-quality` — 3D scenes need responsive handling too
 - `deploy-ready` — bundle size is part of deploy readiness
 
 ## Common failure modes

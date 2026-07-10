@@ -1,9 +1,10 @@
 ---
 name: supabase-guardian
 description: >-
-  Use this skill when creating or altering Supabase tables, columns, indexes, migrations, RLS policies, auth flows, storage bucket policies, edge functions, or service-role usage. Do not use for non-database UI work, read-only product planning, or deployment actions that do not touch Supabase.
+  Use this whenever touching Supabase: tables, columns, indexes, migrations, RLS policies, auth
+  flows, storage policies, edge functions, or service-role keys — even if the user just says "add a
+  field". Every schema change gets a migration; every user-facing table gets RLS.
 ---
-
 
 # supabase-guardian
 
@@ -12,20 +13,6 @@ Review every database, auth, and RLS change before it ships. The skill that prev
 ## Purpose
 
 Gate all Supabase changes — schema, RLS, auth, storage, edge functions — through a structured review. No DB change ships without passing this.
-
-## When to use this
-
-**You MUST use this skill when:**
-- Creating or altering tables, columns, or indexes
-- Adding, changing, or removing RLS policies
-- Modifying auth configuration or flows
-- Changing storage bucket policies
-- Writing or editing edge functions
-- Changing service-role usage patterns
-
-## When NOT to use this
-
-- Do not use for non-database UI work, read-only product planning, or deployment actions that do not touch Supabase.
 
 ## Process
 

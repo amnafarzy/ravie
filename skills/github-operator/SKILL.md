@@ -1,9 +1,10 @@
 ---
 name: github-operator
 description: >-
-  Use this skill when working with GitHub branches, commits, PRs, remotes, CI failures, releases, repo docs, Linear links, or source-of-truth code operations. Do not use for product requirements, Notion knowledge, Linear issue planning, or direct pushes to main/master.
+  Use this for standalone git/GitHub operations — branch management, commit hygiene, PR creation or
+  cleanup, CI failure triage, releases, remotes — when the work is NOT implementing an approved
+  Linear issue end-to-end (that's issue-to-pr). Never push to main.
 ---
-
 
 # github-operator
 
@@ -12,24 +13,6 @@ Manage GitHub as the source of truth for code. Branches, commits, PRs, repo docs
 ## Purpose
 
 Treat GitHub as authoritative for code, migrations, repo documentation, and automation source. Maintain clean Git hygiene. Connect PRs to Linear issues. Resist treating chat as more authoritative than committed files.
-
-## When to use this
-
-- Creating branches and naming them by Linear issue
-- Reviewing repo state before changes
-- Committing in coherent chunks
-- Pushing branches and managing remotes
-- Opening PRs with proper descriptions
-- Linking PRs to Linear issues
-- Reviewing PRs (yours or others')
-- Triaging failed CI checks
-- Maintaining repo docs (README, ADRs, runbooks)
-- Generating release notes
-- Cleaning stale branches
-
-## When NOT to use this
-
-- Do not use for product requirements, Notion knowledge, Linear issue planning, or direct pushes to main/master.
 
 ## Stack integration
 
@@ -338,7 +321,7 @@ Weekly check:
 - `supabase-guardian` — invoked when migrations are part of the PR
 - `vercel-preview-qa` — invoked after push, before PR finalized
 - `deploy-ready` — invoked before merging
-- `permission-guardian` — for tier escalation requests
+- `PERMISSION-MODEL.md` (repo root) — for tier escalation requests
 - `decision-log-adr` — when decisions get committed as ADRs
 
 ## Common failure modes

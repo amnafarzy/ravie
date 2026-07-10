@@ -1,9 +1,10 @@
 ---
 name: requirements-griller
 description: >-
-  Use this skill when a request, idea, or product/design direction is ambiguous, high-leverage, user-facing, likely to become Linear/GitHub work, or needs one-question-at-a-time clarification into scope and acceptance criteria. Do not use for simple factual questions, pure exploration, already-approved PRDs/issues, or implementation-ready work that belongs to issue-to-pr.
+  Use this whenever a request or idea is vague, ambiguous, or high-stakes and would otherwise become
+  guesswork — the user says "I want something like…" or "can we add…" without acceptance criteria.
+  Asks one question at a time until scope is clear. Output feeds idea-to-prd-tracer or issue-to-pr.
 ---
-
 
 # requirements-griller
 
@@ -14,25 +15,6 @@ Turn vague requests into precise, executable scope. Stops the failure mode where
 Take an unclear request — "build a dashboard" / "make it better" / "add some kind of profile thing" — and produce: clarified scope, acceptance criteria, non-goals, assumptions, risks, and recommended next workflow.
 
 Ask one sharp question at a time. Recommend defaults. Push back on overbroad scope. Use deep interrogation mode when the request is pre-spec. Stop the moment work could become a Linear issue.
-
-## When to use this
-
-- Request is ambiguous ("improve the dashboard" — improve how?)
-- Request is high-leverage (involves shipped features, clients, or production)
-- Request is product-facing or user-facing
-- Request is going to become Linear/GitHub work
-- Request implies decisions that haven't been stated
-- You catch yourself about to implement on assumptions
-
-Don't use this for:
-- One-line answer questions ("how do I run the dev server?")
-- Spike / exploration where you genuinely just want to play
-- Already-grilled requests with PRD and acceptance criteria — just route to `issue-to-pr`
-
-
-## When NOT to use this
-
-- Do not use for simple factual questions, pure exploration, already-approved PRDs/issues, or implementation-ready work that belongs to issue-to-pr.
 
 ## Deep interrogation mode
 
