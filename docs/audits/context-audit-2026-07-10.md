@@ -3,9 +3,7 @@
 > **ACCEPTED BASELINE (going forward, 25 skills): 2,603 tokens always-loaded — measured 2026-07-10 after parallel-dispatch (+~90) was added; verification passes within +10% (≤ ~2,863). See docs/audits/verification-2026-07-10.md.**
 > Prior 24-skill baseline: ~2,100–2,513 (self-measured 2,513 via claude -p; user-confirmed via interactive /context showing Skills 2.1k + Memory 35, no rules category, archived skills absent).
 
-Measurement + triage only; no behavior changed. Token estimates use ~4 chars/token (scaffolding only — superseded by the /context measurement above).
-**Evidence caveat:** git history has 2 commits (initial release + rename), so triage rests on
-overlap analysis, redundancy with native Claude ability, and the repo's own docs — not commit frequency.
+Measurement + triage only; no behavior changed. Token estimates use ~4 chars/token (scaffolding only — superseded by the /context measurement above). **Evidence caveat:** git history had 2 commits at audit time, so triage rests on overlap analysis, redundancy with native ability, and the repo's own docs — not commit frequency.
 
 ## 1. Inventory
 
