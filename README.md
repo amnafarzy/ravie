@@ -1,6 +1,6 @@
 # Ravie
 
-A four-layer operating system for Claude Code. 33 active skills, 5 rule reference files, 4 subagents, and 4 hook scripts — built for solo founders and designer-developers who are tired of re-explaining themselves every AI session.
+A four-layer operating system for Claude Code. 23 active skills, 5 rule reference files, 2 subagents, and 4 hook scripts — built for solo founders and designer-developers who are tired of re-explaining themselves every AI session.
 
 ---
 
@@ -30,7 +30,7 @@ Four layers, each with a specific job:
 ├─────────────────────────────────────────────┤
 │  Layer 4: Skills + Agents                   │
 │  skills/ + agents/                          │
-│  → 33 specific workflows, 4 subagents       │
+│  → 23 specific workflows, 2 subagents       │
 └─────────────────────────────────────────────┘
 ```
 
@@ -40,7 +40,7 @@ Four layers, each with a specific job:
 
 **Layer 3** handles context — your stack, commands, connected systems, active priorities. You write this once per project (~100 lines).
 
-**Layer 4** handles execution — domain-specific skills the agent selects based on YAML skill descriptions, plus 4 subagents that run in isolated context for code review, research, security, and UX checks.
+**Layer 4** handles execution — domain-specific skills the agent selects based on YAML skill descriptions, plus 2 subagents that run in isolated context for security and UX checks.
 
 ## Who this is for
 
@@ -101,7 +101,7 @@ Superpowers handles workflow discipline (brainstorm → plan → TDD). Karpathy 
 
 ## What's inside
 
-### 33 active skills
+### 23 active skills
 
 **Daily drivers** (fully expanded with commands, templates, failure modes):
 
@@ -125,13 +125,15 @@ Superpowers handles workflow discipline (brainstorm → plan → TDD). Karpathy 
 
 **Design skills** — for founders who also design:
 
-`design-system-ui` · `responsive-ui` · `accessibility-ui` · `animation-motion` · `threejs-motion-performance` · `ui-copy`
+`ui-quality` (design system + responsive + accessibility + UI copy in one pass) · `animation-motion` · `threejs-motion-performance`
 
-**Meta skills** — the system improves itself:
+**Meta & operations** — the system improves and runs itself:
 
-`pattern-learner` · `skill-creator` · `workflow-evaluator` · `decision-log-adr`
+`skill-creator` · `decision-log-adr` · `project-control-plane` · `daily-brief` · `observability-incident-loop`
 
-[Full index →](SKILL-INDEX.md)
+Speculative and merged skills live in `skills/archive/` — restorable with one `git mv` (see `skills/archive/README.md`).
+
+[Full index →](ROUTER.md)
 
 ### 5 rule reference files
 
@@ -145,16 +147,16 @@ These files do not auto-load just because they exist. Skills and the project ent
 | `ui.md` | Frontend/component work |
 | `context-hygiene.md` | Session management |
 
-### 4 subagents
+### 2 subagents
 
 Spawn in isolated context to avoid confirmation bias:
 
 | Agent | Purpose |
 |---|---|
-| `code-reviewer` | 8-dimension code review in fresh context |
-| `research-scout` | Explore codebase without polluting main context |
 | `security-auditor` | Auth, RLS, secrets, injection review |
 | `ux-checker` | State completeness, responsive, accessibility |
+
+(`code-reviewer` and `research-scout` are archived in `agents/archive/` — the `code-review` skill and the built-in Explore agent cover them.)
 
 ### 3 guard hooks plus auto-format
 
@@ -203,7 +205,7 @@ All of these are configurable. The skills reference these tools but the patterns
 | [MASTER-GUIDE.md](MASTER-GUIDE.md) | Architecture deep-dive and principles |
 | [CHEATSHEET.md](CHEATSHEET.md) | Daily reference — what to say for common tasks |
 | [INSTALLATION.md](INSTALLATION.md) | Full setup for Claude Code |
-| [SKILL-INDEX.md](SKILL-INDEX.md) | Complete catalog of all active skills |
+|  [ROUTER.md](ROUTER.md) | Routing map and complete catalog of all active skills |
 | [docs/context-hygiene.md](docs/context-hygiene.md) | The "smart zone" — critical for session quality |
 | [docs/superpowers-setup.md](docs/superpowers-setup.md) | Superpowers plugin integration |
 | [docs/hooks-guide.md](docs/hooks-guide.md) | How to write and use hooks |

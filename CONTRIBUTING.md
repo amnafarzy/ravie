@@ -74,7 +74,7 @@ description: Use this skill when [specific trigger conditions]. Do not use when 
 - [Specific failure mode 3 from real usage]
 ```
 
-3. Add the skill to `SKILL-INDEX.md` in the appropriate group
+3. Add the skill to the index table in `ROUTER.md`
 4. Submit a PR with a description of when you use this skill and why it exists
 
 

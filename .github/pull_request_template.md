@@ -14,7 +14,7 @@
 - [ ] Skill follows the structure in CONTRIBUTING.md
 - [ ] "When to use this" section has specific triggers
 - [ ] "Hard rules" section uses mandatory language (MUST, NEVER)
-- [ ] Added to SKILL-INDEX.md (if new skill)
+- [ ] Added to ROUTER.md skill index (if new skill)
 - [ ] No personal data or client-specific content
 - [ ] If touching `scripts/`: hook scripts pass `bash -n`
 - [ ] If touching `scripts/`: tested with sample JSON payloads (block + allow cases)

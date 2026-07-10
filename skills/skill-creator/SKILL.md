@@ -18,14 +18,14 @@ Turn a repeated pattern, workflow, or correction into a valid SKILL.md file with
 
 ### Frontmatter requirements
 
-Every skill must begin with YAML frontmatter. The `description` is the routing surface, so put trigger conditions there, not only in the body. Keep it to 1-3 sentences and include when not to use the skill.
+Every skill must begin with YAML frontmatter. The `description` is the ENTIRE routing surface: what the skill does plus the exact contexts and phrases that should fire it, max 60 words, phrased assertively (Claude under-triggers skills), with explicit NOT-boundaries naming the neighboring skill. When-to-use info never goes in the body.
 
 Example:
 
 ```yaml
 ---
 name: issue-to-pr
-description: Use this skill when the user has an approved Linear issue with acceptance criteria and wants to implement it end-to-end through branch creation, tracer bullet, checks, preview, and PR. Do not use for vague bugs, exploration, or work without acceptance criteria.
+description: Use this whenever the user wants to implement an approved Linear issue that has acceptance criteria — "build PROJ-42", "implement this issue", "pick up the next ticket". Covers the full loop: branch, tracer bullet, checks, preview, PR. The daily driver for feature work.
 ---
 ```
 
@@ -48,7 +48,7 @@ Follow this structure:
 ```markdown
 ---
 name: [skill-name-matches-directory]
-description: Use this skill when [specific trigger conditions Claude should match]. Do not use for [explicit non-goals or situations handled by another skill].
+description: Use this whenever [specific trigger contexts and phrases]. NOT for [explicit non-goal] — use [neighboring skill]. (Max 60 words; the whole trigger contract lives here.)
 ---
 
 # [skill-name]
@@ -91,7 +91,7 @@ Ask the agent to read the skill and explain when it would use it and what it wou
 
 If it fails any of these, tighten the language. Use mandatory framing ("You MUST", "NEVER", "ALWAYS") for critical rules.
 
-### 5. Register in SKILL-INDEX.md
+### 5. Register in ROUTER.md
 Add the new skill to the index with its group, depth tier, and purpose.
 
 ## Output format
@@ -103,7 +103,7 @@ When creating or revising a skill, produce a complete skill package plan and the
 
 ## Files changed
 - `skills/[skill-directory]/SKILL.md` — [what changed]
-- `SKILL-INDEX.md` — [new index entry or "no change"]
+- `ROUTER.md` — [new index entry or "no change"]
 
 ## Frontmatter
 - name: [must exactly match directory]
@@ -118,14 +118,14 @@ When creating or revising a skill, produce a complete skill package plan and the
 - Common failure modes
 
 ## Validation
-- Existing skill overlap checked in `SKILL-INDEX.md`
+- Existing skill overlap checked in `ROUTER.md`
 - No client-specific or secret content included
 - Trigger tested against at least one realistic prompt
 ```
 
 ## Common failure modes
 
-**Duplicate skill creation** — Creating a new skill without first checking `SKILL-INDEX.md` leads to overlapping workflows and unclear routing. Improve the existing skill instead when the trigger already exists.
+**Duplicate skill creation** — Creating a new skill without first checking `ROUTER.md` leads to overlapping workflows and unclear routing. Improve the existing skill instead when the trigger already exists.
 
 **Vague trigger description** — A description like "Use for frontend work" does not give Claude Code enough routing signal. The description must state the exact situation, inputs, boundaries, and when not to use the skill.
 
@@ -136,7 +136,7 @@ When creating or revising a skill, produce a complete skill package plan and the
 ## Hard rules
 
 - Never create a skill for a one-time task — skills are for repeated patterns
-- Never create a skill that duplicates an existing one — check SKILL-INDEX.md first
+- Never create a skill that duplicates an existing one — check ROUTER.md first
 - Never put client-specific content in a reusable skill
 - Always include valid YAML frontmatter before the title with `name` matching the directory and a trigger-contract `description` (max 60 words — all when-to-use info lives here, never in the body)
 - Always include "Hard rules", "Connects to", and realistic failure modes; keep the body under 500 lines (use a references/ subfolder beyond that)
