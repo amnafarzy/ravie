@@ -9,6 +9,7 @@
 - (none)
 
 ## Recent decisions (max 8 bullets — decision + one-clause rationale, newest first, delete oldest when full)
+- Accepted baseline = 2,513 tok always-loaded, measured via /context — rules confirmed on-demand, 4-chars/token retired
 - Archive relocated to repo-root archive/ — outside skills/ and agents/, immune to any future discovery glob
 - Continuity system = docs/STATE.md (≤40 lines) + one CLAUDE.md pointer line; skill body loads on demand
 - Rule files compressed to bullets; enforcement lives in hooks, never restated in prose (rules/*.md)
@@ -16,7 +17,6 @@
 - SKILL-INDEX.md collapsed into ROUTER.md — one human-facing routing doc
 - Skill descriptions are ≤60-word trigger contracts; no when-to-use content in bodies (skill-creator enforces)
 - accessibility-ui/responsive-ui/design-system-ui/ui-copy merged into ui-quality — they co-fired on any UI task
-- 7 speculative skills + 2 redundant agents archived, one-git-mv restorable (archive/README.md)
 
 ## Don't touch (max 4 bullets — fragile areas and why)
 - hooks/ and scripts/ — byte-identical to v1.1.0 baseline is a verified guarantee; change only deliberately

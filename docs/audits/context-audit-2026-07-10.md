@@ -1,6 +1,8 @@
 # Ravie Context Efficiency Audit — 2026-07-10
 
-Measurement + triage only; no behavior changed. Token estimates use ~4 chars/token.
+> **ACCEPTED BASELINE: 2,513 tokens always-loaded, confirmed via /context on 2026-07-10. Verification passes check against this number.** (24 skill descriptions ~2,330 + 2 agent descriptions 148 + CLAUDE.md 35. Skill rows in /context are rounded to ~10 tok.)
+
+Measurement + triage only; no behavior changed. Token estimates use ~4 chars/token (scaffolding only — superseded by the /context measurement above).
 **Evidence caveat:** git history has 2 commits (initial release + rename), so triage rests on
 overlap analysis, redundancy with native Claude ability, and the repo's own docs — not commit frequency.
 
@@ -49,7 +51,7 @@ overlap analysis, redundancy with native Claude ability, and the repo's own docs
 **Subagents** (description ALWAYS LOADED; body ON TRIGGER): `agents/code-reviewer.md` (55/263 tok, duplicates code-review skill),
 `research-scout.md` (52/176, duplicates built-in Explore agent), `security-auditor.md` (58/310), `ux-checker.md` (51/295).
 
-**Rules** (ALWAYS LOADED per audit definition; note: `quickstart/CLAUDE.md:46` says rules do *not* auto-load — read on demand):
+**Rules** (empirically confirmed 2026-07-10: NOT auto-loaded — /context shows no rules category and only CLAUDE.md under Memory Files; read on demand as the repo docs claimed):
 `context-hygiene.md` (~299 tok), `git.md` (~274), `karpathy-guidelines.md` (~365), `supabase.md` (~355), `ui.md` (~353). Total ~1,645.
 
 **CLAUDE.md files**: `CLAUDE-TEMPLATE.md` installable portion ~1,263 tok (full file 2,093 incl. meta notes);
@@ -69,8 +71,8 @@ block main push, block secret reads, auto-format), `scripts/block-env-writes.sh`
 | CLAUDE.md (filled template) | ~1,263 |
 | **Total** | **~5,917** |
 
-**≈ 5,900 tokens = 3.0% of a 200k window, every session, before any work.**
-If rules truly load on demand (as the repo's own docs claim), the tax is ~4,270 tokens (2.1%).
+SETTLED: /context confirmed rules never auto-load, so the correct pre-cleanup baseline is the
+**rules-excluded ~4,270 tokens (2.1% of 200k)**; the 5,917 with-rules figure was wrong accounting.
 Skill frontmatter is the largest and least visible line item: descriptions average ~85 tokens each —
 2–3× the length needed to trigger correctly.
 
@@ -133,4 +135,12 @@ Verification notes:
 - **Archive is outside the scan path:** the CLI's discovery glob is `skills/*/SKILL.md` (one level, verified against the claude 2.1.206 bundle), which the original nested archive location did not match; the archive has since been relocated to repo-root `archive/`, outside skills/ and agents/ entirely, so no discovery mechanism, current or future, can load it.
 - **Hooks byte-identical** to the pre-audit baseline (`git diff b8af7fd..HEAD -- hooks/ scripts/` is empty).
 - **All 23 descriptions ≤60 words; all bodies ≤365 lines** (cap 500). SKILL-INDEX.md collapsed into ROUTER.md.
-- Caveat: per `quickstart/CLAUDE.md`, rule files load on demand rather than automatically; excluding them, the tax is ~2,325 tok (1.2%), a 45.6% reduction against the equivalent ~4,272 tok baseline.
+## 6. Empirical confirmation (2026-07-10, `claude --plugin-dir . -p "/context"`, CLI 2.1.206, model claude-sonnet-5)
+
+/context settles the rules question: **rules never auto-load** (no rules category; Memory Files lists only CLAUDE.md, 35 tok). Measured Ravie footprint: 24 skill descriptions ~2,330 + agents 148 + CLAUDE.md 35 = **2,513 tok** — 1.26% of a 200k window, and a 41.1% reduction against the corrected ~4,270 rules-excluded baseline. Hooks confirmed at zero context cost.
+
+Measured 2,513 differs from the projected ~3,554 by −29% (>15%), explained by two offsetting errors, not unaccounted loading:
+- The projection wrongly counted 1,137 tok of rule files that /context proves never load (−1,137).
+- The ~4 chars/token scaffold underestimates real tokenization by ~25-30%: measured descriptions average ~97 tok vs ~79 estimated (skills ~2,330 vs 1,817; agents 148 vs 109; CLAUDE.md 35 vs 22) (+~565).
+
+Out of Ravie's control (not counted in the baseline): harness system prompt + tools ~41k tok, built-in/user skills ~2.0k, deferred tools ~17k. The 200k-window percentages are conventions — the measured session ran on a 967k window.
