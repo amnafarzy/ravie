@@ -1,6 +1,6 @@
 # [Project Name] — Claude Code context
 
-> Copy this file to the root of your project as CLAUDE.md. Fill in the bracketed sections. Delete what doesn't apply. Takes ~5 minutes.
+> Copy this file to the root of your project as CLAUDE.md. Fill in the brackets, delete this line. Takes ~5 minutes.
 
 ## What this project is
 
@@ -17,45 +17,21 @@
 
 | Purpose | Command |
 |---|---|
-| Install | `[pnpm install]` |
-| Dev server | `[pnpm dev]` |
-| Build | `[pnpm build]` |
-| Typecheck | `[pnpm typecheck]` |
-| Lint | `[pnpm lint]` |
-| Test | `[pnpm test]` |
+| Dev / Build | `[pnpm dev]` / `[pnpm build]` |
+| Typecheck / Lint / Test | `[pnpm typecheck]` / `[pnpm lint]` / `[pnpm test]` |
 
 ## Connected systems
 
-| System | URL |
-|---|---|
-| GitHub | [https://github.com/...] |
-| Tasks | [https://linear.app/... or equivalent] |
-| Docs | [https://notion.so/... or equivalent] |
+- GitHub: [url] · Tasks: [Linear url] · Docs: [Notion url]
 
-## Active priorities
+## Current state
 
-- [What are you working on right now?]
-- [What's next?]
+Read docs/STATE.md before starting work; treat its "Now" section as the default task list. (The `session-handoff` skill maintains it — say "wrap up" when stopping.)
 
-## Approval gates
+## Non-negotiables
 
-Default tier: **Tier 2 (draft only)**. Ask before any external write or production change.
-
-## Rule references
-
-Rule files in `rules/` (in plugin) or `.claude/rules/` (direct copy) do not auto-load just because they exist. When a task touches Git, Supabase, UI, or context-heavy debugging, read the relevant rule file first.
-
-## Available skills
-
-Skills are in the Ravie plugin (referenced as `ravie:[skill-name]`) or in `.claude/skills/[name]/SKILL.md` for direct-copy installs. Key skills:
-- `issue-to-pr` — the daily driver for building features
-- `debug-root-cause` — for finding actual bug causes
-- `requirements-griller` — for clarifying vague requests
-- `code-review` — review AI-generated code before committing
-
-## Things to never do
-
+- Approval gates: default **Tier 2 (draft only)**. Ask before any external write or production change.
+- Task tracking lives in the task system above — never create local file-based tracking.
 - [Your dealbreakers — e.g., "Don't suggest switching away from Supabase"]
-- Don't create local file-based task tracking — use the task system above
-- Don't skip baseline checks before pushing code
-- Don't commit secrets or .env files
+
+Rule files (`rules/git.md`, `rules/supabase.md`, `rules/ui.md`, `rules/context-hygiene.md`) load on demand — read the relevant one when the task touches its domain. Enforcement (no main pushes, no .env writes, no secret reads) is handled by Ravie hooks.

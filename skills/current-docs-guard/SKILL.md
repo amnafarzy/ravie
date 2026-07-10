@@ -1,9 +1,10 @@
 ---
 name: current-docs-guard
 description: >-
-  Use this skill when implementing or changing version-sensitive APIs, SDKs, frameworks, package upgrades, Supabase, Next.js, Vercel, MCP, auth systems, Three.js, browser APIs, deployment tooling, or any API not verified in the current session. Do not use for pure business logic, copy edits, or styling changes with no external API dependency.
+  Use this before implementing against any version-sensitive or unverified API: package upgrades,
+  SDK and framework APIs (Next.js, Supabase, Vercel, Three.js, MCP, auth, browser APIs), or any
+  external API you would otherwise write from memory unverified this session.
 ---
-
 
 # current-docs-guard
 
@@ -12,26 +13,6 @@ Verify current official documentation before changing version-sensitive APIs. Pr
 ## Purpose
 
 Before any implementation that touches version-sensitive tools (Supabase, Next.js, Vercel, Three.js, MCP, auth systems), check the current official docs. Not blogs, not courses, not memory — the actual docs at the actual URL.
-
-## When to use this
-
-**You MUST use this skill when:**
-- Changing Supabase API calls, auth flows, or RLS patterns
-- Updating Next.js routing, server components, or API routes
-- Configuring Vercel deployment settings or edge functions
-- Installing or updating MCP servers
-- Touching Three.js rendering, loaders, or shaders
-- Updating any package more than one major version
-- Using an API you haven't verified in this session
-
-**Skip for:**
-- Pure business logic with no external API dependencies
-- CSS/styling changes
-- Copy changes
-
-## When NOT to use this
-
-- Do not use for pure business logic, copy edits, or styling changes with no external API dependency.
 
 ## Process
 

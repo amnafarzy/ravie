@@ -1,9 +1,10 @@
 ---
 name: code-review
 description: >-
-  Use this skill when AI or a developer changed more than a trivial amount of code, touched module boundaries, created components/services/API routes, or modified auth, permissions, database, or RLS logic. Do not use for typo fixes, documentation-only edits, single-line config changes, or changes already reviewed through an equivalent code-review workflow.
+  Use this after any non-trivial code change, AI or human, before committing: new components,
+  services, API routes, module boundaries, or anything touching auth, permissions, database, or RLS
+  — even if the user only says "ready to commit". Skip only typo or docs-only edits.
 ---
-
 
 # code-review
 
@@ -12,24 +13,6 @@ Review AI-generated code before it ships. Catches the failure modes that passing
 ## Purpose
 
 Structured review of code changes — whether from AI generation or manual edits — before committing or opening a PR. This is the quality gate between "checks pass" and "code is actually good."
-
-## When to use this
-
-**You MUST use this skill when:**
-- AI generated more than 50 lines of new code
-- Changes touch multiple files or module boundaries
-- New components, services, or API routes were created
-- Database schema or RLS policies changed
-- Auth or permission logic was modified
-
-**Skip for:**
-- Typo fixes, single-line changes, config tweaks
-- Documentation-only changes
-- Changes already reviewed by Superpowers' two-stage review
-
-## When NOT to use this
-
-- Do not use for typo fixes, documentation-only edits, single-line config changes, or changes already reviewed through an equivalent code-review workflow.
 
 ## Process
 
@@ -148,7 +131,7 @@ For medium/low: create follow-up Linear issues if the fix would expand scope.
 - `issue-to-pr` — invoke between step 11 (full checks) and step 15 (open PR)
 - `debug-root-cause` — when review reveals a bug
 - `supabase-guardian` — when review reveals DB/RLS issues
-- `pattern-learner` — feed recurring review findings into pattern library
+- `skill-creator` — codify recurring review findings
 
 ## Common failure modes
 

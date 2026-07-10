@@ -140,7 +140,7 @@ The 4 most-used workflows. Reference the skill name in your prompt and Claude sh
 - ❌ Letting Claude write durable docs in chat → push to Notion explicitly
 - ❌ Starting implementation without acceptance criteria → run `requirements-griller` first
 - ❌ Editing skills based on what *might* be useful → only edit based on actual friction
-- ❌ Trying to install all 33 skills before using any → install, use one, then expand
+- ❌ Trying to install all 25 skills before using any → install, use one, then expand
 
 ---
 

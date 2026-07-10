@@ -1,6 +1,6 @@
 # Ravie
 
-A four-layer operating system for Claude Code. 33 active skills, 5 rule reference files, 4 subagents, and 4 hook scripts — built for solo founders and designer-developers who are tired of re-explaining themselves every AI session.
+A four-layer operating system for Claude Code. 25 active skills, 5 rule reference files, 2 subagents, and 4 hook scripts — built for solo founders and designer-developers who are tired of re-explaining themselves every AI session.
 
 ---
 
@@ -30,7 +30,7 @@ Four layers, each with a specific job:
 ├─────────────────────────────────────────────┤
 │  Layer 4: Skills + Agents                   │
 │  skills/ + agents/                          │
-│  → 33 specific workflows, 4 subagents       │
+│  → 25 specific workflows, 2 subagents       │
 └─────────────────────────────────────────────┘
 ```
 
@@ -40,7 +40,7 @@ Four layers, each with a specific job:
 
 **Layer 3** handles context — your stack, commands, connected systems, active priorities. You write this once per project (~100 lines).
 
-**Layer 4** handles execution — domain-specific skills the agent selects based on YAML skill descriptions, plus 4 subagents that run in isolated context for code review, research, security, and UX checks.
+**Layer 4** handles execution — domain-specific skills the agent selects based on YAML skill descriptions, plus 2 subagents that run in isolated context for security and UX checks.
 
 ## Who this is for
 
@@ -52,6 +52,10 @@ Four layers, each with a specific job:
 ## Quick start
 
 Ravie is a Claude Code plugin. Install it once, then add a `CLAUDE.md` entry file to your project.
+
+> **Working in this repo (or a clone)?** The committed `.claude/settings.json` registers the repo itself as a plugin marketplace, so Claude Code offers to install Ravie when you trust the folder.
+> If `/context` shows no `Plugin (ravie)` skills, run once per machine: `claude plugin marketplace add . && claude plugin install ravie@ravie --scope user`, then launch plain `claude`.
+> User scope matters: it makes the plugin load in `git worktree` checkouts too — a project-scope install is keyed to one path and silently skips worktrees.
 
 **1. Add the marketplace and install the plugin**
 
@@ -75,11 +79,13 @@ curl -O https://raw.githubusercontent.com/amnafarzy/ravie/main/quickstart/CLAUDE
 ```
 
 In a new Claude Code session in your project:
+
 ```
 > "Read CLAUDE.md and tell me what you understand about this project."
 ```
 
 If the agent summarizes your stack correctly, it's working. Try a real task:
+
 ```
 > "Help me debug this: [your current bug]"
 ```
@@ -89,6 +95,7 @@ The agent should match the debug request to the `debug-root-cause` skill based o
 > Prefer not to use a plugin? See [INSTALLATION.md](INSTALLATION.md) for direct git install, local plugin testing, or manual file copy.
 
 **4. (Optional) Install the companion plugins**
+
 ```
 /plugin marketplace add obra/superpowers-marketplace
 /plugin install superpowers@superpowers-marketplace
@@ -101,19 +108,19 @@ Superpowers handles workflow discipline (brainstorm → plan → TDD). Karpathy 
 
 ## What's inside
 
-### 33 active skills
+### 25 active skills
 
 **Daily drivers** (fully expanded with commands, templates, failure modes):
 
-| Skill | What it does |
-|---|---|
-| `issue-to-pr` | Linear issue → branch → tracer bullet → checks → preview → PR |
-| `debug-root-cause` | Find actual cause, not patch symptoms |
-| `requirements-griller` | Vague request → precise scope + acceptance criteria |
-| `idea-to-prd-tracer` | Idea → PRD → issues → plan → tracer bullet |
-| `figma-lovable-handoff` | Design → token map + components + states + QA checklist |
-| `code-review` | 8-dimension review of AI-generated code before commit |
-| `growth-launch-pack` | Positioning, competitors, SEO, CRO, launch checklist |
+| Skill                   | What it does                                                  |
+| ----------------------- | ------------------------------------------------------------- |
+| `issue-to-pr`           | Linear issue → branch → tracer bullet → checks → preview → PR |
+| `debug-root-cause`      | Find actual cause, not patch symptoms                         |
+| `requirements-griller`  | Vague request → precise scope + acceptance criteria           |
+| `idea-to-prd-tracer`    | Idea → PRD → issues → plan → tracer bullet                    |
+| `figma-lovable-handoff` | Design → token map + components + states + QA checklist       |
+| `code-review`           | 8-dimension review of AI-generated code before commit         |
+| `growth-launch-pack`    | Positioning, competitors, SEO, CRO, launch checklist          |
 
 **System operators** — manage your tools as systems of record:
 
@@ -125,62 +132,64 @@ Superpowers handles workflow discipline (brainstorm → plan → TDD). Karpathy 
 
 **Design skills** — for founders who also design:
 
-`design-system-ui` · `responsive-ui` · `accessibility-ui` · `animation-motion` · `threejs-motion-performance` · `ui-copy`
+`ui-quality` (design system + responsive + accessibility + UI copy in one pass) · `animation-motion` · `threejs-motion-performance`
 
-**Meta skills** — the system improves itself:
+**Meta & operations** — the system improves and runs itself:
 
-`pattern-learner` · `skill-creator` · `workflow-evaluator` · `decision-log-adr`
+`skill-creator` · `session-handoff` · `parallel-dispatch` · `decision-log-adr` · `project-control-plane` · `daily-brief` · `observability-incident-loop`
 
-[Full index →](SKILL-INDEX.md)
+Speculative and merged skills live in `archive/skills/` — restorable with one `git mv` (see `archive/README.md`).
+
+[Full index →](ROUTER.md)
 
 ### 5 rule reference files
 
 These files do not auto-load just because they exist. Skills and the project entry file instruct the agent to read the relevant rule file when working in that domain.
 
-| Rule | Reference for |
-|---|---|
+| Rule                     | Reference for                                      |
+| ------------------------ | -------------------------------------------------- |
 | `karpathy-guidelines.md` | Behavioral baseline and surgical-change discipline |
-| `git.md` | Git operations |
-| `supabase.md` | Database/auth/RLS work |
-| `ui.md` | Frontend/component work |
-| `context-hygiene.md` | Session management |
+| `git.md`                 | Git operations                                     |
+| `supabase.md`            | Database/auth/RLS work                             |
+| `ui.md`                  | Frontend/component work                            |
+| `context-hygiene.md`     | Session management                                 |
 
-### 4 subagents
+### 2 subagents
 
 Spawn in isolated context to avoid confirmation bias:
 
-| Agent | Purpose |
-|---|---|
-| `code-reviewer` | 8-dimension code review in fresh context |
-| `research-scout` | Explore codebase without polluting main context |
-| `security-auditor` | Auth, RLS, secrets, injection review |
-| `ux-checker` | State completeness, responsive, accessibility |
+| Agent              | Purpose                                       |
+| ------------------ | --------------------------------------------- |
+| `security-auditor` | Auth, RLS, secrets, injection review          |
+| `ux-checker`       | State completeness, responsive, accessibility |
+
+(`code-reviewer` and `research-scout` are archived in `archive/agents/` — the `code-review` skill and the built-in Explore agent cover them.)
 
 ### 3 guard hooks plus auto-format
 
 Deterministic enforcement for covered agent hook calls:
 
-| Hook | What it does |
-|---|---|
-| `block-env-writes.sh` | Prevents writes to real `.env` files while allowing sanitized examples |
+| Hook                    | What it does                                                                         |
+| ----------------------- | ------------------------------------------------------------------------------------ |
+| `block-env-writes.sh`   | Prevents writes to real `.env` files while allowing sanitized examples               |
 | `block-bash-secrets.sh` | Blocks Bash reads/searches/staging of `.env`, keys, `secrets/`, and credential files |
-| `block-main-push.sh` | Prevents direct, forced, mirrored, or bulk pushes to main/master branches |
-| `auto-format.sh` | Runs Prettier after Write/Edit/MultiEdit when possible |
+| `block-main-push.sh`    | Prevents direct, forced, mirrored, or bulk pushes to main/master branches            |
+| `auto-format.sh`        | Runs Prettier after Write/Edit/MultiEdit when possible                               |
 
 ## How it's different from Superpowers
 
 Ravie and [Superpowers](https://github.com/obra/superpowers) are **complementary, not competing**.
 
-| | Superpowers | Ravie |
-|---|---|---|
-| Handles | Workflow discipline | Project context |
-| Scope | Process-agnostic | Stack-specific |
-| Design skills | Not the focus | Yes (Figma, responsive, a11y, motion) |
-| Growth/launch | Not the focus | Yes (positioning, SEO, CRO) |
-| System-of-record rules | Not the focus | Yes (Notion/Linear/GitHub governance) |
-| Permission tiers | Not the focus | Yes (5-tier model) |
+|                        | Superpowers         | Ravie                                 |
+| ---------------------- | ------------------- | ------------------------------------- |
+| Handles                | Workflow discipline | Project context                       |
+| Scope                  | Process-agnostic    | Stack-specific                        |
+| Design skills          | Not the focus       | Yes (Figma, responsive, a11y, motion) |
+| Growth/launch          | Not the focus       | Yes (positioning, SEO, CRO)           |
+| System-of-record rules | Not the focus       | Yes (Notion/Linear/GitHub governance) |
+| Permission tiers       | Not the focus       | Yes (5-tier model)                    |
 
-Install both. Superpowers tells the agent *how* to approach work. Ravie tells the agent *what* it needs to know about your specific project.
+Install both. Superpowers tells the agent _how_ to approach work. Ravie tells the agent _what_ it needs to know about your specific project.
 
 ## Stack assumptions
 
@@ -197,16 +206,16 @@ All of these are configurable. The skills reference these tools but the patterns
 
 ## Documentation
 
-| Doc | Purpose |
-|---|---|
-| [START-HERE.md](START-HERE.md) | Onboarding — read first |
-| [MASTER-GUIDE.md](MASTER-GUIDE.md) | Architecture deep-dive and principles |
-| [CHEATSHEET.md](CHEATSHEET.md) | Daily reference — what to say for common tasks |
-| [INSTALLATION.md](INSTALLATION.md) | Full setup for Claude Code |
-| [SKILL-INDEX.md](SKILL-INDEX.md) | Complete catalog of all active skills |
-| [docs/context-hygiene.md](docs/context-hygiene.md) | The "smart zone" — critical for session quality |
-| [docs/superpowers-setup.md](docs/superpowers-setup.md) | Superpowers plugin integration |
-| [docs/hooks-guide.md](docs/hooks-guide.md) | How to write and use hooks |
+| Doc                                                    | Purpose                                               |
+| ------------------------------------------------------ | ----------------------------------------------------- |
+| [START-HERE.md](START-HERE.md)                         | Onboarding — read first                               |
+| [MASTER-GUIDE.md](MASTER-GUIDE.md)                     | Architecture deep-dive and principles                 |
+| [CHEATSHEET.md](CHEATSHEET.md)                         | Daily reference — what to say for common tasks        |
+| [INSTALLATION.md](INSTALLATION.md)                     | Full setup for Claude Code                            |
+| [ROUTER.md](ROUTER.md)                                 | Routing map and complete catalog of all active skills |
+| [docs/context-hygiene.md](docs/context-hygiene.md)     | The "smart zone" — critical for session quality       |
+| [docs/superpowers-setup.md](docs/superpowers-setup.md) | Superpowers plugin integration                        |
+| [docs/hooks-guide.md](docs/hooks-guide.md)             | How to write and use hooks                            |
 
 ## Roadmap
 

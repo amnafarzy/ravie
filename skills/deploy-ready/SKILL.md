@@ -1,9 +1,10 @@
 ---
 name: deploy-ready
 description: >-
-  Use this skill when a PR or branch is close to merge or production deploy, especially for public-facing features, new env vars, external services, metadata, performance, secrets, or release-readiness checks. Do not use for early development, preview-only QA handled by vercel-preview-qa, or production actions without explicit approval.
+  Use this whenever a branch or PR is about to merge or deploy to production — "ship it", "ready to
+  merge", "deploy" — especially with new env vars, external services, metadata, or secrets. Runs the
+  release checklist. NOT preview-URL browser QA — that's vercel-preview-qa.
 ---
-
 
 # deploy-ready
 
@@ -12,17 +13,6 @@ Pre-deployment checklist. Run this before merging or deploying to catch what tes
 ## Purpose
 
 Verify a PR or branch is actually ready for production — not just "checks pass" but "nothing will break when real users hit it."
-
-## When to use this
-
-- PR is about to merge to main
-- Preparing a Vercel production deployment
-- Adding new env vars or external services
-- Shipping a public-facing feature
-
-## When NOT to use this
-
-- Do not use for early development, preview-only QA handled by vercel-preview-qa, or production actions without explicit approval.
 
 ## Process
 
@@ -136,7 +126,7 @@ pnpm build  # must succeed cleanly, not just locally
 
 - `vercel-preview-qa` — complementary: deploy-ready is the checklist, preview-qa is the visual verification
 - `supabase-guardian` — for DB/auth security review
-- `permission-guardian` — production deploy requires Tier 4 approval
+- `PERMISSION-MODEL.md` (repo root) — production deploy requires Tier 4 approval
 
 ## Common failure modes
 

@@ -1,9 +1,10 @@
 ---
 name: skill-creator
 description: >-
-  Use this skill when creating or improving a Ravie skill from a repeated workflow, repeated correction, pattern-learner finding, or existing skill failure. Do not use for one-off tasks, generic documentation, or workflows already covered by an existing skill.
+  Use this whenever creating or improving a Ravie skill — the user says "make this a skill", "we
+  keep repeating this", or a workflow or correction has recurred enough to codify. Also owns
+  evaluating existing skills after real usage. NOT for one-off tasks.
 ---
-
 
 # skill-creator
 
@@ -13,30 +14,18 @@ Create new skills from observed patterns. When you find yourself re-explaining t
 
 Turn a repeated pattern, workflow, or correction into a valid SKILL.md file with YAML frontmatter so future Claude Code sessions can match it from the description. Also used to improve existing skills based on real friction.
 
-## When to use this
-
-- You've corrected the agent on the same thing 3+ times across sessions
-- A workflow you repeat doesn't have a skill yet
-- An existing skill keeps producing wrong output and needs rewriting
-- `pattern-learner` identified a recurring pattern worth formalizing
-- You want to extract a reusable workflow from a completed project
-
-## When NOT to use this
-
-- Do not use for one-off tasks, generic documentation, or workflows already covered by an existing skill.
-
 ## Process
 
 ### Frontmatter requirements
 
-Every skill must begin with YAML frontmatter. The `description` is the routing surface, so put trigger conditions there, not only in the body. Keep it to 1-3 sentences and include when not to use the skill.
+Every skill must begin with YAML frontmatter. The `description` is the ENTIRE routing surface: what the skill does plus the exact contexts and phrases that should fire it, max 60 words, phrased assertively (Claude under-triggers skills), with explicit NOT-boundaries naming the neighboring skill. When-to-use info never goes in the body.
 
 Example:
 
 ```yaml
 ---
 name: issue-to-pr
-description: Use this skill when the user has an approved Linear issue with acceptance criteria and wants to implement it end-to-end through branch creation, tracer bullet, checks, preview, and PR. Do not use for vague bugs, exploration, or work without acceptance criteria.
+description: Use this whenever the user wants to implement an approved Linear issue that has acceptance criteria — "build PROJ-42", "implement this issue", "pick up the next ticket". Covers the full loop: branch, tracer bullet, checks, preview, PR. The daily driver for feature work.
 ---
 ```
 
@@ -46,7 +35,7 @@ What situation should activate this skill? The answer belongs first in YAML fron
 - Good: "when creating a new React component that needs to connect to Supabase data"
 
 ### 2. Extract the process
-From your past sessions or the pattern-learner output, document what the correct process actually is. Include:
+From your past sessions and repeated corrections, document what the correct process actually is. Include:
 - Steps in order
 - Commands to run
 - Files to check
@@ -59,7 +48,7 @@ Follow this structure:
 ```markdown
 ---
 name: [skill-name-matches-directory]
-description: Use this skill when [specific trigger conditions Claude should match]. Do not use for [explicit non-goals or situations handled by another skill].
+description: Use this whenever [specific trigger contexts and phrases]. NOT for [explicit non-goal] — use [neighboring skill]. (Max 60 words; the whole trigger contract lives here.)
 ---
 
 # [skill-name]
@@ -68,15 +57,6 @@ description: Use this skill when [specific trigger conditions Claude should matc
 
 ## Purpose
 [2-3 sentences on why this exists.]
-
-## When to use this
-**You MUST use this skill when:**
-- [Specific trigger 1]
-- [Specific trigger 2]
-
-## When NOT to use this
-- [Thing this is NOT for]
-- [Other skill to use instead]
 
 ## Process
 ### 1. [First step]
@@ -111,7 +91,7 @@ Ask the agent to read the skill and explain when it would use it and what it wou
 
 If it fails any of these, tighten the language. Use mandatory framing ("You MUST", "NEVER", "ALWAYS") for critical rules.
 
-### 5. Register in SKILL-INDEX.md
+### 5. Register in ROUTER.md
 Add the new skill to the index with its group, depth tier, and purpose.
 
 ## Output format
@@ -123,16 +103,14 @@ When creating or revising a skill, produce a complete skill package plan and the
 
 ## Files changed
 - `skills/[skill-directory]/SKILL.md` — [what changed]
-- `SKILL-INDEX.md` — [new index entry or "no change"]
+- `ROUTER.md` — [new index entry or "no change"]
 
 ## Frontmatter
 - name: [must exactly match directory]
-- description: [trigger-focused, includes use and do-not-use boundaries]
+- description: [the FULL trigger contract, max 60 words: what it does + exact phrases/contexts that fire it, phrased assertively ("Use this whenever…"), with explicit NOT-boundaries naming the neighboring skill. The description is paid in every session — every word counts. No when-to-use content in the body.]
 
 ## Body sections
 - Purpose
-- When to use this
-- When NOT to use this
 - Process with concrete commands/examples
 - Output format
 - Hard rules
@@ -140,14 +118,14 @@ When creating or revising a skill, produce a complete skill package plan and the
 - Common failure modes
 
 ## Validation
-- Existing skill overlap checked in `SKILL-INDEX.md`
+- Existing skill overlap checked in `ROUTER.md`
 - No client-specific or secret content included
 - Trigger tested against at least one realistic prompt
 ```
 
 ## Common failure modes
 
-**Duplicate skill creation** — Creating a new skill without first checking `SKILL-INDEX.md` leads to overlapping workflows and unclear routing. Improve the existing skill instead when the trigger already exists.
+**Duplicate skill creation** — Creating a new skill without first checking `ROUTER.md` leads to overlapping workflows and unclear routing. Improve the existing skill instead when the trigger already exists.
 
 **Vague trigger description** — A description like "Use for frontend work" does not give Claude Code enough routing signal. The description must state the exact situation, inputs, boundaries, and when not to use the skill.
 
@@ -158,15 +136,15 @@ When creating or revising a skill, produce a complete skill package plan and the
 ## Hard rules
 
 - Never create a skill for a one-time task — skills are for repeated patterns
-- Never create a skill that duplicates an existing one — check SKILL-INDEX.md first
-- Never put client-specific content in a reusable skill — use `client-boundary-guard`
-- Always include valid YAML frontmatter before the title with `name` matching the directory and a trigger-focused `description`
-- Always include "When to use this", "When NOT to use this", "Hard rules", "Connects to", and realistic failure modes
+- Never create a skill that duplicates an existing one — check ROUTER.md first
+- Never put client-specific content in a reusable skill
+- Always include valid YAML frontmatter before the title with `name` matching the directory and a trigger-contract `description` (max 60 words — all when-to-use info lives here, never in the body)
+- Always include "Hard rules", "Connects to", and realistic failure modes; keep the body under 500 lines (use a references/ subfolder beyond that)
+- Never let two skill descriptions overlap in trigger conditions — merge the skills or add an explicit "NOT for X — use [other]" boundary
 - Always test with a fresh session before considering it done
 - Use mandatory language ("MUST", "NEVER") for critical behavioral rules — advisory language gets ignored under pressure
 
 ## Connects to
 
-- `pattern-learner` — identifies patterns worth formalizing
-- `workflow-evaluator` — evaluates whether existing skills are working
+- This skill also owns pattern-mining and skill-health evaluation (deeper checklists archived in `archive/skills/pattern-learner/` and `archive/skills/workflow-evaluator/`)
 - `project-control-plane` — for updating CLAUDE.md to reference new skills

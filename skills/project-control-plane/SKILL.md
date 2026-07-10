@@ -1,9 +1,10 @@
 ---
 name: project-control-plane
 description: >-
-  Use this skill when onboarding a repo to Claude Code, creating or repairing CLAUDE.md, copying skills, configuring hooks, or verifying project setup. Do not use for ordinary feature work inside an already-onboarded repo.
+  Use this whenever setting up Claude Code in a repo — the user says "onboard this project", "set up
+  CLAUDE.md", "install the skills or hooks" — or when CLAUDE.md is missing, stale, or broken. NOT
+  for feature work inside an already-onboarded repo.
 ---
-
 
 # project-control-plane
 
@@ -12,17 +13,6 @@ Onboard a new repo to Claude Code. Creates the CLAUDE.md, copies skills, configu
 ## Purpose
 
 When starting a new project or adding Ravie to an existing repo, this skill walks through the full setup: create the context file, install skills, configure enforcement, and verify with a test task.
-
-## When to use this
-
-- New repo being set up for the first time
-- Existing project getting Claude Code support
-- Migrating from a different AI coding setup
-- Resetting a project's CLAUDE.md after it drifted
-
-## When NOT to use this
-
-- Do not use for ordinary feature work inside an already-onboarded repo.
 
 ## Process
 

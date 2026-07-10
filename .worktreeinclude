@@ -1,0 +1,8 @@
+# Copied into each new worktree (gitignore syntax; a file is copied only if it
+# exists AND is gitignored). Verified against this repo's .gitignore 2026-07-10:
+# no .env files exist here by design (the block-bash-secrets hook forbids env
+# access) and there are no dependency dirs. The one qualifying file is the
+# machine-local Claude Code settings, which is NOT in the repo (gitignored):
+# Claude Code materializes it as permission approvals accrue. On a fresh clone,
+# worktrees created before it exists copy nothing — harmless; no manual step needed.
+.claude/settings.local.json

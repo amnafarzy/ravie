@@ -1,0 +1,14 @@
+{
+  "enabledPlugins": {
+    "ravie@ravie": true
+  },
+  "extraKnownMarketplaces": {
+    "ravie": {
+      "source": {
+        "source": "directory",
+        "path": "."
+      },
+      "autoUpdate": true
+    }
+  }
+}

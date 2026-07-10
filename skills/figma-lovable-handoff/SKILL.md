@@ -1,9 +1,10 @@
 ---
 name: figma-lovable-handoff
 description: >-
-  Use this skill when converting Figma frames or Lovable prototypes into production-ready implementation plans, component architecture, token maps, states, and QA criteria. Do not use for designs with no accessible reference, backend-only work, or already-built UI that only needs preview QA.
+  Use this whenever converting a Figma frame or Lovable prototype into an implementation plan —
+  component architecture, token map, states, QA criteria — even if the user just pastes a design
+  link and says "build this". Requires an accessible design reference.
 ---
-
 
 # figma-lovable-handoff
 
@@ -12,18 +13,6 @@ Convert designs from Figma or prototypes from Lovable into production-ready impl
 ## Purpose
 
 Take a design source (Figma file, screenshot, Lovable prototype URL) and produce: a token map, component spec, state map, accessibility requirements, Linear issues, and an implementation plan that fits your actual stack — without copying garbage code.
-
-## When to use this
-
-- Implementing any new screen or component from Figma
-- Converting a Lovable prototype into your codebase
-- Reviewing UI fidelity against design after implementation
-- Planning component architecture before writing code
-- Triaging which parts of a Lovable export to keep vs rewrite
-
-## When NOT to use this
-
-- Do not use for designs with no accessible reference, backend-only work, or already-built UI that only needs preview QA.
 
 ## Stack integration
 
@@ -134,7 +123,7 @@ For each breakpoint, document:
 - Font size adjustments
 
 ### 6. Define accessibility requirements
-Apply the project's a11y baseline (from `CLAUDE.md` or `accessibility-ui` skill):
+Apply the project's a11y baseline (from `CLAUDE.md` or the `ui-quality` skill):
 - Semantic HTML elements required
 - ARIA labels needed
 - Keyboard navigation expected
@@ -277,9 +266,7 @@ Stop before implementation. Output the spec and wait for approval to:
 ## Connects to
 
 - `requirements-griller` — invoke if intent unclear before starting
-- `design-system-ui` — for token and variant decisions
-- `responsive-ui` — for responsive layout details
-- `accessibility-ui` — for a11y deep-dive on complex components
+- `ui-quality` — token/variant decisions, responsive layout details, and a11y deep-dives
 - `animation-motion` — if motion is part of the design
 - `threejs-motion-performance` — if 3D / WebGL is involved
 - `supabase-guardian` — if new data shape needed

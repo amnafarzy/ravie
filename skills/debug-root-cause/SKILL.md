@@ -1,9 +1,11 @@
 ---
 name: debug-root-cause
 description: >-
-  Use this skill when tests, builds, previews, UI behavior, data flows, RLS, deployment, or automation jobs fail and the root cause is not yet known. Do not use for already-diagnosed fixes, feature implementation, or vague product questions that need requirements-griller first.
+  Use this whenever something fails before it has shipped — failing tests, broken builds, wrong UI
+  behavior, preview errors — and the cause is unknown, even if the user just pastes an error.
+  Diagnose before fixing. Production failures (main branch, live users) → observability-incident-
+  loop.
 ---
-
 
 # debug-root-cause
 
@@ -12,21 +14,6 @@ Find the actual cause of a bug instead of patching symptoms. The skill that prev
 ## Purpose
 
 Debug methodically: reproduce, gather evidence, isolate, hypothesize, test, fix at the smallest scope, verify, document.
-
-## When to use this
-
-- Tests fail
-- Build fails
-- Vercel preview is broken
-- UI behavior is wrong
-- Data is wrong or missing
-- Supabase RLS blocks something it shouldn't (or allows what it shouldn't)
-- VPS/automation server automation fails
-- You catch yourself making 3+ random patches without understanding the cause
-
-## When NOT to use this
-
-- Do not use for already-diagnosed fixes, feature implementation, or vague product questions that need requirements-griller first.
 
 ## Stack integration
 
@@ -226,7 +213,7 @@ This is for future-you. The minute the fix lands, you'll forget why.
 - `observability-incident-loop` — invoke if this is a production incident
 - `issue-to-pr` — the fix flows through normal PR cycle unless it's a hotfix
 - `decision-log-adr` — if the fix changes architecture, log it
-- `pattern-learner` — if the bug class is recurring, surface it for skill updates
+- `skill-creator` — if the bug class is recurring, codify it into a skill update
 
 ## Common failure modes
 

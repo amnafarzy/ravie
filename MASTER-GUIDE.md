@@ -195,7 +195,7 @@ ravie/
 ├── PERMISSION-MODEL.md   ← safety contract (Claude reads)
 ├── WORKFLOWS.md          ← multi-step runbooks (Claude reads)
 │
-├── SKILL-INDEX.md        ← catalog (you reference, Claude can read)
+├── ROUTER.md             ← routing map + skill catalog (you reference, Claude can read)
 ├── DISCARD-LIST.md       ← what was stripped and why (you, occasional)
 │
 └── skills/
