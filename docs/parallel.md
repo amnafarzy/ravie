@@ -7,8 +7,8 @@ New terminal tab → `claude -w <task-name>`. The worktree appears at `.claude/w
 ## What carries over, and why
 
 - **All tracked files**: CLAUDE.md, `rules/`, `hooks/` + `scripts/`, skill sources — a worktree is a full checkout.
-- **Ravie's skills and agents** — but only because the plugin is installed at **USER scope** on this machine (see STATE.md decisions / README Quick start). The failure mode: a project-scope install is recorded against the literal repo path, so worktrees (different paths) silently load **zero** skills — verified on CLI 2.1.206 (0 skills at project scope, all 24 at user scope), even though the docs say v2.1.200+ should load project-scope plugins in same-repo worktrees. Trust the check, not the assumption: if `/context` in a worktree shows no `Plugin (ravie)` entries, run `claude plugin install ravie@ravie --scope user`.
-- **Gitignored files matched by `.worktreeinclude`**: `.claude/settings.local.json` and `CLAUDE.local.md`. Copy mechanism verified 2026-07-10. `.worktreeinclude` is read from the main checkout at creation time.
+- **Ravie's skills and agents** — but only because the plugin is installed at **USER scope** on this machine (see STATE.md decisions / README Quick start). The failure mode: a project-scope install is recorded against the literal repo path, so worktrees (different paths) silently load **zero** skills — verified on CLI 2.1.206 (0 skills at project scope vs all of them at user scope — 24 at test time, 25 now), even though the docs say v2.1.200+ should load project-scope plugins in same-repo worktrees. Trust the check, not the assumption: if `/context` in a worktree shows no `Plugin (ravie)` entries, run `claude plugin install ravie@ravie --scope user`.
+- **Gitignored files matched by `.worktreeinclude`**: `.claude/settings.local.json` only. Copy mechanism verified 2026-07-10; `.worktreeinclude` is read from the main checkout at creation time. On a fresh clone that file doesn't exist yet (it's gitignored) — Claude Code creates it as permission approvals accrue, and worktrees made before then simply have nothing to copy, which is harmless.
 
 ## Plugin freshness
 
