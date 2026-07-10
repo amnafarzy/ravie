@@ -41,7 +41,7 @@ Layer 4 — Skills + Agents (invoked on demand)
 
 **Layer 3 handles context** — what the agent knows about THIS project. Stack, commands, linked systems, active priorities. You write this once per project, ~100 lines.
 
-**Layer 4 handles execution** — 24 active skills for specific tasks (issue-to-pr, debug-root-cause, figma-handoff, etc.) plus 2 subagents that run in isolated context for security and UX checks.
+**Layer 4 handles execution** — 25 active skills for specific tasks (issue-to-pr, debug-root-cause, figma-handoff, etc.) plus 2 subagents that run in isolated context for security and UX checks.
 
 ---
 
