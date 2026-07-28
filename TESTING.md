@@ -2,6 +2,8 @@
 
 Run these from the repo root. Hooks read Claude Code tool payloads from stdin and emit structured JSON with `hookSpecificOutput.permissionDecision: "deny"` when they block. Allow cases should print no stdout and exit 0.
 
+This file documents **36 payload cases (17 block, 19 allow)**: the three core hook sections (16 block, 14 allow), the `git stash show -p` edge case (1 block, 1 allow), and the env-var limitation section (4 allow). `scripts/run-hook-tests.sh` runs all 36 and must stay in sync with this file. The missing-`jq` check below is a separate fail-open behavior test, not a payload case — it is deliberately excluded from CI (see the comment in `run-hook-tests.sh`).
+
 Requirements:
 
 ```bash

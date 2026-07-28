@@ -61,6 +61,13 @@ internally inconsistent with the test doc.
 
 **Evidence.** Counted directly from `TESTING.md`: 2+5+9 = 16 block, 3+5+6 = 14 allow.
 
+> **Correction (2026-07-28).** The 30 figure was itself an undercount: it covered only
+> the three core sections and missed the `git stash show -p` edge case (1 block, 1
+> allow) and the env-var limitation section (4 allow). `TESTING.md` documents **36
+> payload cases (17 block, 19 allow)**, all run by `scripts/run-hook-tests.sh` in CI.
+> The "30" references below are left as written; they were accurate to the sections
+> they counted.
+
 ---
 
 ## 3. Hook behavior verification (no code change) ✅
