@@ -1,5 +1,7 @@
 # Ravie
 
+[![hooks-ci](https://github.com/amnafarzy/ravie/actions/workflows/hooks-ci.yml/badge.svg)](https://github.com/amnafarzy/ravie/actions/workflows/hooks-ci.yml)
+
 A four-layer operating system for Claude Code. 25 active skills, 5 rule reference files, 2 subagents, and 4 hook scripts — built for solo founders and designer-developers who are tired of re-explaining themselves every AI session.
 
 ---

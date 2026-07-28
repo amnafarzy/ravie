@@ -1,0 +1,62 @@
+name: hooks-ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  bash-syntax:
+    name: bash -n every script
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Syntax-check all scripts
+        run: |
+          for f in scripts/*.sh; do
+            echo "bash -n $f"
+            /bin/bash -n "$f"
+          done
+
+  shellcheck:
+    name: shellcheck scripts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install shellcheck
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+      - name: Run shellcheck
+        run: shellcheck scripts/*.sh
+
+  json-validate:
+    name: jq validate JSON configs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+      - name: Validate JSON files
+        run: |
+          for f in hooks/hooks.json .claude/settings.json settings.example.json .claude-plugin/plugin.json .claude-plugin/marketplace.json; do
+            echo "jq empty $f"
+            jq empty "$f"
+          done
+
+  hook-tests:
+    name: run TESTING.md payload cases
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+      - name: Run hook payload tests
+        run: /bin/bash scripts/run-hook-tests.sh
+
+  check-counts:
+    name: docs-vs-reality counts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+      - name: Verify claimed counts match the repo
+        run: /bin/bash scripts/check-counts.sh
