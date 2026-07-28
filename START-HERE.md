@@ -119,7 +119,7 @@ After that first run, the skill or rule that caused friction is what you edit. D
 | `CLAUDE-TEMPLATE.md` | Yes, when installing | The entry point you write per project |
 | `INSTALLATION.md` | Yes, when installing | Setup commands |
 | `CHEATSHEET.md` | Skim, bookmark | Daily reference |
-| `PERSONAL-PREFERENCES.md` | Skim, edit | Your defaults |
+| `quickstart/PERSONAL-PREFERENCES.md` | Skim, edit | Your defaults |
 | `docs/context-hygiene.md` | Read once | The "smart zone" — critical for session quality |
 | `docs/superpowers-setup.md` | Read when installing | Plugin integration |
 | `docs/hooks-guide.md` | Skim once | How enforcement works |
