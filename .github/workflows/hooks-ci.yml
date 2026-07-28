@@ -60,3 +60,11 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y jq
       - name: Verify claimed counts match the repo
         run: /bin/bash scripts/check-counts.sh
+
+  check-links:
+    name: markdown link integrity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Verify relative markdown links resolve
+        run: /bin/bash scripts/check-links.sh
