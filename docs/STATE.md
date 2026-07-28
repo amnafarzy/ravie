@@ -26,4 +26,4 @@
 
 - hooks/hooks.json and the four hook scripts (block-env-writes, block-bash-secrets, block-main-push, auto-format) — byte-identical to v1.1.0 baseline is a verified guarantee; test/check scripts in scripts/ are not covered and may evolve
 - Skill frontmatter wrapping — hyphen-breaking is disabled so skill names never split across lines
-- CHANGELOG.md and FIXES-APPLIED.md — historical records; old counts in them are intentional
+- CHANGELOG.md and docs/audits/fixes-v1.0-to-v1.1.md — historical records; old counts in them are intentional
