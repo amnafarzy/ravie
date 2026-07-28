@@ -196,7 +196,6 @@ ravie/
 ├── WORKFLOWS.md          ← multi-step runbooks (Claude reads)
 │
 ├── ROUTER.md             ← routing map + skill catalog (you reference, Claude can read)
-├── DISCARD-LIST.md       ← what was stripped and why (you, occasional)
 │
 └── skills/
     ├── [orchestration skills — router, project-control-plane, governance]
