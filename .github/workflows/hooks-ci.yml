@@ -9,7 +9,7 @@ jobs:
     name: bash -n every script
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Syntax-check all scripts
         run: |
           for f in scripts/*.sh; do
@@ -21,7 +21,7 @@ jobs:
     name: shellcheck scripts
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Install shellcheck
         run: sudo apt-get update && sudo apt-get install -y shellcheck
       - name: Run shellcheck
@@ -31,7 +31,7 @@ jobs:
     name: jq validate JSON configs
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
       - name: Validate JSON files
@@ -45,7 +45,7 @@ jobs:
     name: run TESTING.md payload cases
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
       - name: Run hook payload tests
@@ -55,7 +55,7 @@ jobs:
     name: docs-vs-reality counts
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
       - name: Verify claimed counts match the repo
