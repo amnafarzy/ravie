@@ -2,7 +2,7 @@
   "$schema": "https://www.schemastore.org/claude-code-marketplace.json",
   "name": "ravie",
   "owner": {
-    "name": "Ravie Contributors"
+    "name": "Ams I"
   },
   "description": "Ravie — a four-layer operating system for Claude Code aimed at solo founders and designer-developers.",
   "plugins": [

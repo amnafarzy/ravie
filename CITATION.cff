@@ -3,6 +3,8 @@ title: Ravie
 message: "If you use this project, please cite it as below."
 type: software
 authors:
+  - family-names: "I"
+    given-names: "Ams"
   - name: "Ravie Contributors"
 repository-code: "https://github.com/amnafarzy/ravie"
 url: "https://github.com/amnafarzy/ravie"
