@@ -1,6 +1,6 @@
 # Testing Ravie hooks
 
-Run these from the repo root. Hooks read Claude Code tool payloads from stdin and emit structured JSON with `hookSpecificOutput.permissionDecision: "deny"` when they block. Allow cases should print no stdout and exit 0.
+Hooks read Claude Code tool payloads from stdin and emit structured JSON with `hookSpecificOutput.permissionDecision: "deny"` when they block. Allow cases should print no stdout and exit 0.
 
 This file documents **36 payload cases (17 block, 19 allow)**: the three core hook sections (16 block, 14 allow), the `git stash show -p` edge case (1 block, 1 allow), and the env-var limitation section (4 allow). `scripts/run-hook-tests.sh` runs all 36 and must stay in sync with this file. The missing-`jq` check below is a separate fail-open behavior test, not a payload case — it is deliberately excluded from CI (see the comment in `run-hook-tests.sh`).
 
@@ -11,7 +11,30 @@ command -v bash
 command -v jq
 ```
 
-## Syntax and settings checks
+## Testing in this repo
+
+In this repository the hook scripts live at `scripts/`. Run these from the repo root. The canonical runner is the same suite CI runs — all 36 payload cases (17 block, 19 allow):
+
+```bash
+bash scripts/run-hook-tests.sh
+```
+
+Syntax and settings checks for the repo layout:
+
+```bash
+bash -n scripts/*.sh
+jq empty hooks/hooks.json
+```
+
+Expected:
+- `run-hook-tests.sh` reports `36 passed, 0 failed` and exits 0.
+- `bash -n` and `jq empty` print nothing and exit 0.
+
+## Testing a direct-copy install
+
+A direct-copy install (per `INSTALLATION.md`) places the hook scripts at `.claude/scripts/`, which is why the paths below differ from the repo layout. Run these from the root of the project you installed into.
+
+### Syntax and settings checks
 
 ```bash
 bash -n .claude/scripts/*.sh
@@ -24,7 +47,7 @@ Expected:
 - `jq empty` prints nothing and exits 0.
 - Hook scripts are executable, typically mode `755`.
 
-## `block-env-writes.sh`
+### `block-env-writes.sh`
 
 Block real env files:
 
@@ -45,7 +68,7 @@ echo '{"tool_input":{}}' | bash .claude/scripts/block-env-writes.sh
 
 Expected: no stdout, exit 0.
 
-## `block-main-push.sh`
+### `block-main-push.sh`
 
 These bypass cases must all block:
 
@@ -71,7 +94,7 @@ echo '{"tool_input":{}}' | bash .claude/scripts/block-main-push.sh
 
 Expected: no stdout, exit 0.
 
-## `block-bash-secrets.sh`
+### `block-bash-secrets.sh`
 
 These secret access and bypass cases must all block:
 
@@ -102,7 +125,7 @@ echo '{"tool_input":{}}' | bash .claude/scripts/block-bash-secrets.sh
 
 Expected: no stdout, exit 0.
 
-### Documented edge case: `git stash show -p`
+#### Documented edge case: `git stash show -p`
 
 ```bash
 echo '{"tool_input":{"command":"git stash show -p"}}' | bash .claude/scripts/block-bash-secrets.sh
@@ -113,7 +136,7 @@ Expected: the first **allows** (no stdout, exit 0); the second **blocks** (`perm
 
 `git stash show -p` on its own prints the diff of stashed *tracked* changes and is a routine review command, so it is intentionally allowed — blocking it would be a false positive for normal work. A `.env` is gitignored in a normal project and is not stashed unless you force it, so a bare `git stash show -p` does not leak it. The moment the command names a secret path explicitly (`-- .env`), the existing path matcher denies it, as the second case shows.
 
-### Accepted limitation: reading environment *variables* (not files)
+#### Accepted limitation: reading environment *variables* (not files)
 
 ```bash
 echo '{"tool_input":{"command":"printenv API_KEY"}}' | bash .claude/scripts/block-bash-secrets.sh
@@ -126,7 +149,7 @@ Expected: all **allow** (no stdout, exit 0).
 
 This hook is **path-based**: it blocks shell references to secret *files* (`.env`, `secrets/`, `*.pem`, `id_rsa`, `id_ed25519`, `credentials.json`) and recursive secret discovery. It does **not** inspect reads of environment variables already loaded into the process (`printenv`, `echo $VAR`, `os.environ`, `process.env`). Blocking those would false-positive on routine commands such as `echo $HOME` or `echo $PATH`. Treat in-process env-var access as out of scope for this hook; the deny list in `settings.json` plus not committing real `.env` files is the control there.
 
-## Missing `jq` behavior
+### Missing `jq` behavior
 
 Hooks fail open when `jq` is unavailable so they do not break Claude Code on machines that have not installed dependencies yet:
 
