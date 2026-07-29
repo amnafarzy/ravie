@@ -5,6 +5,40 @@ All notable changes to Ravie are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.1.1] - 2026-07-29
+
+Maintenance release: CI, verification tooling, and repo hygiene — plus the context-efficiency overhaul merged on 2026-07-10 (PR #1), documented under Notes below. Within the maintenance pass itself, no skill, agent, or hook behavior changed, and the four hook scripts and `hooks/hooks.json` remain byte-identical to v1.1.0 across the entire release.
+
+### Added
+
+- **CI workflow** (`.github/workflows/hooks-ci.yml`) with six jobs: bash syntax (`bash -n` on every script), shellcheck, JSON validation (`jq empty` on `hooks/hooks.json`, `.claude/settings.json`, `settings.example.json`, and both `.claude-plugin/` manifests), the 36-case hook payload suite, docs-vs-reality count verification, and markdown link integrity.
+- **`scripts/run-hook-tests.sh`** — runs all 36 `TESTING.md` payload cases (17 block, 19 allow) with pass/fail counts and a non-zero exit on failure. The missing-`jq` fail-open case is deliberately excluded: a `PATH=/tmp` variant previously broke CI with exit 127 (see the comment in the script).
+- **`scripts/check-counts.sh`** — fails CI if the component counts claimed in `README.md` and `.claude-plugin/plugin.json` drift from what exists in the repo. "Hook scripts" are counted from what `hooks/hooks.json` actually wires, and every `block-*.sh` guard must be registered there.
+- **`scripts/check-links.sh`** — verifies every relative markdown link outside `archive/` and dot-directories resolves to an existing file; sixth CI job.
+- **CI status badge** at the top of `README.md`.
+
+### Changed
+
+- **`FIXES-APPLIED.md` → `docs/audits/fixes-v1.0-to-v1.1.md`** — it is an audit log and now lives with the other audit docs.
+- **`PERSONAL-PREFERENCES.md` → `quickstart/PERSONAL-PREFERENCES.md`** — it is a fill-in user template, like `quickstart/CLAUDE.md`.
+- **`TESTING.md` restructured** into "Testing in this repo" (repo layout: `scripts/`, with `scripts/run-hook-tests.sh` as the canonical runner) and "Testing a direct-copy install" (the existing payload documentation with its `.claude/scripts/` paths). Payloads and expected outputs are unchanged.
+- **`docs/STATE.md` byte-identical guarantee** scoped to `hooks/hooks.json` and the four hook scripts; the test/check scripts in `scripts/` are not covered and may evolve.
+- **`actions/checkout` bumped v4 → v5** in CI (GitHub's Node 20 deprecation).
+
+### Removed
+
+- **`DISCARD-LIST.md`** — editorial residue from the original source-material distillation; no entry explained why any archived component was archived. That rationale lives in `docs/audits/context-audit-2026-07-10.md`, and `MASTER-GUIDE.md` retains its own discard summary table.
+
+### Fixed
+
+- **Hook payload-case count corrected to 36 (17 block, 19 allow).** The "30 payload cases (16 block, 14 allow)" figure in the v1.1.0 entry below undercounted by omitting the `git stash show -p` edge case (1 block, 1 allow) and the env-var limitation section (4 allow); see the correction note in `docs/audits/fixes-v1.0-to-v1.1.md` §2. `TESTING.md` now states the full count and `scripts/run-hook-tests.sh` enforces it in CI.
+
+### Notes
+
+- **This release also ships the context-efficiency overhaul** merged on 2026-07-10 (PR #1), previously absent from this changelog: skills 33 → 25 (eleven skills archived — seven speculative plus the four-skill UI cluster, which merged into the new `ui-quality`; `parallel-dispatch` and `session-handoff` added), agents 4 → 2 (`code-reviewer` and `research-scout` archived), all skill descriptions rewritten as trigger contracts, rule files compressed, worktree support (`.worktreeinclude`, `docs/parallel.md`), cross-session memory (`docs/STATE.md` + `session-handoff`), and a plugin auto-load fix. Full record: `docs/audits/context-audit-2026-07-10.md`. Archived components are restorable with a one-line `git mv`; see `archive/README.md`.
+
+[1.1.1]: https://github.com/amnafarzy/ravie/releases/tag/v1.1.1
+
 ## [1.1.0] - 2026-05-29
 
 Maintenance and accuracy release. Claude Code only; Codex content extracted to a roadmap doc. No skill, agent, or hook behavior changed.

@@ -9,8 +9,8 @@ authors:
 repository-code: "https://github.com/amnafarzy/ravie"
 url: "https://github.com/amnafarzy/ravie"
 license: MIT
-version: "1.1.0"
-date-released: "2026-05-29"
+version: "1.1.1"
+date-released: "2026-07-29"
 abstract: "A four-layer operating system for Claude Code — skills, rules, hooks, and agents for solo founders and designer-developers."
 keywords:
   - claude-code
